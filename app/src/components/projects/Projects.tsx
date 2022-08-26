@@ -32,8 +32,8 @@ export default function Projects({ projects }: any) {
           Projects
         </h2>
         <p className="mt-4 text-lg leading-normal tracking-tight text-zinc-400">
-          Learn from the experts on the cutting-edge of deception at the most
-          sinister companies.
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It
+          has roots in a piece of classical Latin literature from 45 BC.
         </p>
       </div>
       <div className="mt-6 mb-8 flex flex-wrap gap-4 px-2">
@@ -71,22 +71,23 @@ export default function Projects({ projects }: any) {
           </button>
         ))}
       </div>
-
-      {projectsList.length ? (
-        projectsList.map((project: any) => (
-          <div className="px-3 pb-3" key={project._id}>
-            <ProjectPreview
-              slug={project.slug}
-              coverImage={project.coverImage}
-              title={project.title}
-              projectType={project.projectType}
-              description={project.description}
-            />
-          </div>
-        ))
-      ) : (
-        <div className="text-center">No Projects Yet</div>
-      )}
+      <div className="mx-auto mt-4 grid max-w-2xl grid-cols-1 gap-2 text-sm sm:grid-cols-2 lg:max-w-none lg:grid-cols-3">
+        {projectsList.length ? (
+          projectsList.map((project: any) => (
+            <div className="px-3 pb-3" key={project._id}>
+              <ProjectPreview
+                slug={project.slug}
+                coverImage={project.coverImage}
+                title={project.title}
+                projectType={project.projectType}
+                description={project.description}
+              />
+            </div>
+          ))
+        ) : (
+          <div className="text-center">No Projects Yet</div>
+        )}
+      </div>
     </Container>
   )
 }
