@@ -42,7 +42,7 @@ export default function PostPreview({
             <p
               onClick={handleTagChange}
               key={tag._id}
-              className="mt-3 mr-3 cursor-pointer bg-amber-300/20 px-1 text-sm font-medium capitalize text-zinc-500/90 transition hover:text-zinc-500 dark:text-zinc-200 dark:hover:text-zinc-200/90"
+              className="mt-3 mr-3 cursor-pointer rounded bg-amber-400/20 px-1.5 text-sm font-medium capitalize text-zinc-500/90 transition hover:text-zinc-500 dark:text-zinc-200 dark:hover:text-zinc-200/90"
             >
               {tag.title}
             </p>
