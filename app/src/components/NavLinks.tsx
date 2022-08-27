@@ -21,11 +21,11 @@ export function NavLinks({ navigation }: { navigation: Navigation[] }) {
             onClick={() => router.push(item.pathname)}
             key={item.pathname}
             className={clsx(
-              'relative cursor-pointer rounded border-transparent px-4 py-1.5 text-sm font-semibold tracking-wide transition-colors delay-150 hover:delay-[0ms]',
+              'relative cursor-pointer rounded border-transparent px-4 py-1.5 font-display text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
               {
-                'text-teal-600" border border-teal-600/30 dark:border-amber-500/30 dark:text-amber-500':
+                'border border-teal-600/30 bg-amber-500/5 text-teal-600 dark:border-amber-500/30 dark:text-amber-500':
                   isActive,
-                'dark:hover:text-zinc-200" border  border-zinc-800 text-zinc-500/90 hover:text-zinc-500 dark:text-zinc-300':
+                'border border-white/5 text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300 dark:hover:text-zinc-200':
                   !isActive,
               }
             )}

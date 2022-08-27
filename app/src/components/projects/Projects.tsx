@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import ProjectPreview from '@/components/projects/ProjectPreview'
 import ProjectList from '@/components/projects/ProjectList'
 import ProjectSlider from './ProjectSlider'
+import SectionSeparator from '../ui/SectionSeparator'
 
 export default function Projects({ projects }: any) {
   const [selected, setSelected] = useState('all')
@@ -26,8 +27,8 @@ export default function Projects({ projects }: any) {
   }
 
   return (
-    <Container className="py-10">
-      <div className="mx-auto max-w-2xl px-2 pb-4 font-display lg:mx-0">
+    <Container className="pt-14 pb-20 md:py-20">
+      <div className="max-w-2xl px-2 pb-4 font-display lg:mx-0">
         <h2 className="text-3xl font-medium tracking-tighter text-amber-500">
           Projects
         </h2>
@@ -36,16 +37,16 @@ export default function Projects({ projects }: any) {
           has roots in a piece of classical Latin literature from 45 BC.
         </p>
       </div>
-      <div className="mt-6 mb-8 flex flex-wrap gap-4 px-2">
+      <div className="mt-8 mb-6 flex flex-wrap gap-4 px-2">
         {projectTypes.map((type: any, index: number) => (
           <button
             key={type}
             className={clsx(
-              'relative cursor-pointer rounded border-transparent px-4 py-1.5 text-sm font-semibold capitalize tracking-wide transition-colors delay-150 hover:delay-[0ms]',
+              'relative cursor-pointer rounded border-transparent px-4 py-1.5 font-display text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
               {
-                'text-teal-600" border border-teal-600/30 dark:border-amber-500/30 dark:text-amber-500':
+                'border border-teal-600/30 bg-amber-500/5 text-teal-600 dark:border-amber-500/30 dark:text-amber-500':
                   type === selected,
-                'dark:hover:text-zinc-200" border border-zinc-800 text-zinc-500/90 hover:text-zinc-500 dark:text-zinc-300':
+                'border border-white/5 text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300 dark:hover:text-zinc-200':
                   type !== selected,
               }
             )}
@@ -71,7 +72,8 @@ export default function Projects({ projects }: any) {
           </button>
         ))}
       </div>
-      <div className="mx-auto mt-4 grid max-w-2xl grid-cols-1 gap-2 text-sm sm:grid-cols-2 lg:max-w-none lg:grid-cols-3">
+      <SectionSeparator mt={0} mb={4} />
+      <div className="mx-auto grid max-w-2xl grid-cols-1 gap-1 text-sm sm:grid-cols-2 lg:max-w-none lg:grid-cols-3">
         {projectsList.length ? (
           projectsList.map((project: any) => (
             <div className="px-3 pb-3" key={project._id}>

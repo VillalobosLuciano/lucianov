@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import clsx from 'clsx'
 import ThemeSelector from '../ThemeSelector'
 import useMediaQuery from '../../hooks/useMediaQuery'
+import SectionSeparator from '../ui/SectionSeparator'
 
 function MenuIcon(props: any) {
   return (
@@ -66,7 +67,7 @@ export function Header({ navigation }: { navigation: Navigation[] }) {
   return (
     <header>
       <nav>
-        <Container className="relative z-50 flex justify-between py-6 lg:py-8">
+        <Container className="relative z-50 flex justify-between py-4 md:pt-8 md:pb-6">
           <div className="relative z-10 flex items-center gap-16">
             <Link href="/" aria-label="Home">
               <a className="lg:pt-1">
@@ -149,6 +150,7 @@ export function Header({ navigation }: { navigation: Navigation[] }) {
           </div>
         </Container>
       </nav>
+      <SectionSeparator mt={0} mb={0} />
     </header>
   )
 }

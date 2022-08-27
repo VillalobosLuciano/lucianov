@@ -24,15 +24,15 @@ export default function PostPreview({
   }
 
   return (
-    <div className="px-4 pt-8 xl:grid xl:grid-cols-4 xl:items-baseline">
-      <time className="text-base font-medium text-zinc-400 dark:text-zinc-300">
+    <div className="px-4 pt-8 font-display xl:grid xl:grid-cols-4 xl:items-baseline">
+      <time className="text-sm text-zinc-400 dark:text-zinc-300/80 md:text-base">
         {format(parseISO(date), 'MMMM dd, yyyy')}
       </time>
 
       <div className="xl:col-span-3">
-        <h3 className="mt-1 text-xl font-semibold leading-8 tracking-tight">
+        <h3 className="mt-1 text-xl font-medium leading-8 tracking-tight md:text-2xl">
           <Link href={`/posts/${slug}`}>
-            <a className="capitalize text-teal-600/90 transition-colors duration-300 hover:text-teal-600 dark:text-amber-500/90 dark:hover:text-amber-500">
+            <a className="capitalize text-teal-600/90 transition-colors duration-300 hover:text-teal-600 dark:text-amber-500 dark:hover:text-amber-500/90">
               {title}
             </a>
           </Link>
@@ -42,13 +42,15 @@ export default function PostPreview({
             <p
               onClick={handleTagChange}
               key={tag._id}
-              className="mt-1 mr-3 cursor-pointer text-sm font-semibold uppercase text-zinc-500/90 transition hover:text-zinc-500 dark:text-zinc-200/90 dark:hover:text-zinc-200"
+              className="mt-3 mr-3 cursor-pointer bg-amber-300/20 px-1 text-sm font-medium capitalize text-zinc-500/90 transition hover:text-zinc-500 dark:text-zinc-200 dark:hover:text-zinc-200/90"
             >
               {tag.title}
             </p>
           ))}
         </div>
-        <div className="mt-3 max-w-none text-zinc-400">{excerpt}</div>
+        <div className="mt-4 max-w-none text-zinc-400 line-clamp-4">
+          {excerpt}
+        </div>
       </div>
     </div>
   )
