@@ -91,7 +91,7 @@ export default function Posts({ posts }: any) {
               />
             </span>
           </Listbox.Button>
-          <Listbox.Options className="mt-2 w-full rounded-lg border border-amber-500/30 bg-zinc-800 text-zinc-300 md:absolute md:w-60">
+          <Listbox.Options className="mt-2 w-full rounded-lg border border-amber-500/30 bg-[#1a1a1c] text-zinc-300 md:absolute md:w-60">
             {tags.map((tag: any) => (
               <Listbox.Option
                 key={tag}
