@@ -1,4 +1,3 @@
-import ProjectPreview from '@/components/projects/ProjectPreview'
 import { Container } from '@/components/Container'
 import Link from 'next/link'
 import ProjectList from './ProjectList'

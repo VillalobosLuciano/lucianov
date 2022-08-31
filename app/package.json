@@ -17,6 +17,7 @@
     "date-fns": "^2.29.1",
     "focus-visible": "^5.2.0",
     "framer-motion": "^7.0.0",
+    "keen-slider": "^6.7.0",
     "next": "latest",
     "next-sanity": "^0.6.0",
     "next-themes": "^0.2.0",

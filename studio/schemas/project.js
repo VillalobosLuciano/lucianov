@@ -26,9 +26,35 @@ export default {
       },
     },
     {
+      name: "screenshots",
+      title: "Screenshots",
+      type: "array",
+      of: [
+        {
+          type: "image",
+          fields: [
+            {
+              name: "caption",
+              type: "string",
+              title: "Caption",
+              options: {
+                isHighlighted: true,
+              },
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "intro",
+      title: "Intro",
+      type: "string",
+    },
+    {
       name: "description",
       title: "Description",
-      type: "string",
+      type: "array",
+      of: [{ type: "block" }],
     },
     {
       name: "projectType",

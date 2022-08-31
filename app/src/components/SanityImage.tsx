@@ -8,9 +8,10 @@ interface ImageProps {
     src: string
     lqip: string
   }
-  layout: 'fixed' | 'fill' | 'intrinsic' | 'responsive' | undefined
+  layout?: 'fixed' | 'fill' | 'intrinsic' | 'responsive' | undefined
   className?: string
-  // props: ImageProps
+  width?: number
+  height?: number
 }
 
 export default function SanityImage({

@@ -82,7 +82,7 @@ export default function Projects({ projects }: any) {
                 coverImage={project.coverImage}
                 title={project.title}
                 projectType={project.projectType}
-                description={project.description}
+                intro={project.intro}
               />
             </div>
           ))

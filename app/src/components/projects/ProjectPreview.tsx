@@ -3,13 +3,11 @@ import { useRouter } from 'next/router'
 import SanityImage from '@/components/SanityImage'
 
 export default function ProjectPreview({
-  index,
-  slideRefs,
   slug,
   coverImage,
   title,
   projectType,
-  description,
+  intro,
 }: any) {
   const router = useRouter()
 
@@ -39,14 +37,8 @@ export default function ProjectPreview({
           <h2 className="pb-2 text-sm capitalize text-amber-500/90">
             {projectType}
           </h2>
-          <p className="text-sm text-zinc-400">{description}</p>
+          <p className="text-sm text-zinc-400">{intro}</p>
         </div>
-        {/* <button
-          className="mt-8 w-full rounded-lg border border-amber-500/30 py-2 text-center text-amber-500 transition-colors focus:border-amber-500/50 focus:bg-amber-500/5 md:hidden"
-          onClick={handleClick}
-        >
-          Visit Project
-        </button> */}
       </div>
     </>
   )

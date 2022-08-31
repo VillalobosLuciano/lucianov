@@ -23,6 +23,7 @@ const postFields = groq`
 const projectFields = groq`
   _id,
   title,
+  intro,
   description,
   projectType,
   content,
@@ -32,7 +33,19 @@ const projectFields = groq`
     ..., 
     "lqip": asset->metadata.lqip
   },
+  screenshots[]{
+    ..., 
+    "lqip": asset->metadata.lqip
+  },
   "slug": slug.current,
+   "technologies": technologies[]->{
+    _id, 
+    name,  
+    logo{
+      ..., 
+      "lqip": asset->metadata.lqip
+    },
+  }
 `
 
 export const indexQuery = groq`

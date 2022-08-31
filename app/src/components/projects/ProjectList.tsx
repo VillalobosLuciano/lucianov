@@ -55,7 +55,7 @@ export default function ProjectList({ projects }: any) {
               coverImage={project.coverImage}
               title={project.title}
               projectType={project.projectType}
-              description={project.description}
+              intro={project.intro}
               index={projectIndex}
               slideRefs={slideRefs}
             />

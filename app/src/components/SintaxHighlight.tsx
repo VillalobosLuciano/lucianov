@@ -28,7 +28,11 @@ export default function SintaxHighlight({ code, codeLanguage }: Props) {
   }
 
   return (
-    <div onMouseEnter={onEnter} onMouseLeave={onExit} className="relative">
+    <div
+      onMouseEnter={onEnter}
+      onMouseLeave={onExit}
+      className="relative pt-0.5"
+    >
       {hovered && (
         <button
           aria-label="Copy code"
