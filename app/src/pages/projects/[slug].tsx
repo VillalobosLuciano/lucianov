@@ -9,7 +9,7 @@ import Image from 'next/image'
 import background from '@/images/background.png'
 import { Prose } from '@/components/Prose'
 import NoSsr from '@/components/NoSsr'
-import Slider from '@/components/ui/Slider'
+import ImageSlider from '@/components/ui/ImageSlider'
 import { PortableText } from '@portabletext/react'
 
 export default function Project({ data = {}, preview }: any) {
@@ -42,7 +42,7 @@ export default function Project({ data = {}, preview }: any) {
 
         <div className="relative">
           <div className="relative mx-auto max-w-[85rem] px-4 pt-16 sm:px-6 lg:px-8 lg:pt-20">
-            <div className="mx-auto grid max-w-[40rem] grid-cols-1 gap-y-16 gap-x-8 lg:max-w-none lg:grid-cols-3">
+            <div className="mx-auto grid max-w-[40rem] grid-cols-1 gap-y-16 gap-x-6 lg:max-w-none lg:grid-cols-3">
               <div className="flex flex-col lg:py-12">
                 <h1 className="mt-3 text-4xl font-extrabold leading-none tracking-tight text-zinc-200 sm:text-5xl sm:leading-[3.5rem]">
                   {project?.title}
@@ -50,7 +50,7 @@ export default function Project({ data = {}, preview }: any) {
                 <p className="order-first text-xl font-semibold leading-7 text-amber-500">
                   {project?.projectType}
                 </p>
-                <p className="mt-6 font-display leading-7 text-zinc-400">
+                <p className="mt-6 font-display leading-7 text-zinc-300">
                   <PortableText value={project?.description} />
                 </p>
                 <div className="mt-6 grid max-w-[18rem] grid-cols-2 gap-y-5">
@@ -97,7 +97,7 @@ export default function Project({ data = {}, preview }: any) {
                 </div>
               </div>
               <div className="relative md:mx-20 lg:col-span-2">
-                <Slider images={project?.screenshots} />
+                <ImageSlider images={project?.screenshots} />
 
                 <div className="z-0 hidden md:block">
                   <div className="absolute -top-4 -right-12 -left-12 h-px bg-zinc-100/[0.1] [mask-image:linear-gradient(to_right,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>

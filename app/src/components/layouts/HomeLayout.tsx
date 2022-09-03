@@ -23,11 +23,11 @@ const navigation = [
 
 const HomeLayout = ({ children }: Props) => {
   return (
-    <>
+    <div className="flex min-h-screen flex-col">
       <Header navigation={navigation} />
-      <main>{children}</main>
+      <main className="mb-auto">{children}</main>
       <Footer />
-    </>
+    </div>
   )
 }
 

@@ -25,7 +25,7 @@ const Home: NextPageWithLayout = ({
           content="A portfolio of front-end development."
         />
       </Head>
-      <main className="">
+      <main className="mb-4">
         <Intro author={author} />
 
         <Technologies technologies={technologies} />

@@ -3,8 +3,6 @@ import { Container } from '@/components/Container'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import ProjectPreview from '@/components/projects/ProjectPreview'
-import ProjectList from '@/components/projects/ProjectList'
-import ProjectSlider from './ProjectSlider'
 import SectionSeparator from '../ui/SectionSeparator'
 
 export default function Projects({ projects }: any) {
@@ -75,8 +73,18 @@ export default function Projects({ projects }: any) {
       <SectionSeparator mt={0} mb={4} />
       <div className="mx-auto grid max-w-2xl grid-cols-1 gap-1 text-sm sm:grid-cols-2 lg:max-w-none lg:grid-cols-3">
         {projectsList.length ? (
-          projectsList.map((project: any) => (
-            <div className="px-3 pb-3" key={project._id}>
+          projectsList.map((project: any, i: number) => (
+            <motion.div
+              className="px-3 pb-3"
+              key={project._id}
+              initial={{
+                opacity: 0,
+                translateX: -5,
+                translateY: -5,
+              }}
+              animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+              transition={{ duration: 0.25, delay: 0.1 + i * 0.2 }}
+            >
               <ProjectPreview
                 slug={project.slug}
                 coverImage={project.coverImage}
@@ -84,7 +92,7 @@ export default function Projects({ projects }: any) {
                 projectType={project.projectType}
                 intro={project.intro}
               />
-            </div>
+            </motion.div>
           ))
         ) : (
           <div className="text-center">No Projects Yet</div>

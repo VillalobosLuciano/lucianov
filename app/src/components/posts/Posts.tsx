@@ -8,6 +8,7 @@ import { ChevronDownIcon } from '@heroicons/react/solid'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import SectionSeparator from '../ui/SectionSeparator'
+import { motion } from 'framer-motion'
 
 export default function Posts({ posts }: any) {
   const [searchInput, setSearchInput] = useState('')
@@ -111,15 +112,26 @@ export default function Posts({ posts }: any) {
       <SectionSeparator mt={0} mb={4} />
       <div className="grid grid-cols-1 space-y-10 divide-y divide-teal-600/10 dark:divide-amber-500/10">
         {postsList.length ? (
-          postsList.map((post: any) => (
-            <PostPreview
-              key={post.slug}
-              title={post.title}
-              date={post.date}
-              slug={post.slug}
-              excerpt={post.excerpt}
-              categories={post.categories}
-            />
+          postsList.map((post: any, i: number) => (
+            <motion.div
+              key={post._id}
+              initial={{
+                opacity: 0,
+                translateX: -5,
+                translateY: -5,
+              }}
+              animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+              transition={{ duration: 0.25, delay: 0.1 + i * 0.2 }}
+            >
+              <PostPreview
+                key={post.slug}
+                title={post.title}
+                date={post.date}
+                slug={post.slug}
+                excerpt={post.excerpt}
+                categories={post.categories}
+              />
+            </motion.div>
           ))
         ) : (
           <div className="px-2 text-zinc-400">No posts yet</div>

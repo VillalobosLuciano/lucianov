@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
 import { motion } from 'framer-motion'
 
-export default function Slider({ images }: any) {
+export default function ImageSlider({ images }: any) {
   const [currentSlide, setCurrentSlide] = React.useState(0)
   const [loaded, setLoaded] = useState(false)
   const [hovered, setHovered] = useState(false)
@@ -81,7 +81,7 @@ export default function Slider({ images }: any) {
           <div
             onMouseEnter={onEnter}
             onMouseLeave={onExit}
-            className="absolute right-4 bottom-[14px] z-20 hidden rounded-full md:flex"
+            className="absolute right-4 bottom-[12px] z-20 hidden rounded-full md:flex"
           >
             {hovered && (
               <>
@@ -138,14 +138,13 @@ function Arrow(props: {
     <button
       onClick={props.onClick}
       className={clsx(
-        'flex bg-zinc-300/30 px-2 text-zinc-200 transition-colors',
+        'flex bg-zinc-300/30 py-[2px] px-2 text-zinc-200 transition-colors',
         {
           'rounded-l-full border border-zinc-400/50 hover:bg-zinc-300/40':
             props.left,
           'rounded-r-full border border-zinc-400/50 hover:bg-zinc-300/40':
             !props.left,
-          'cursor-not-allowed bg-transparent hover:bg-transparent':
-            props.disabled,
+          'cursor-default bg-transparent hover:bg-transparent': props.disabled,
         }
       )}
     >
