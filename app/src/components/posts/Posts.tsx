@@ -66,9 +66,7 @@ export default function Posts({ posts }: any) {
   return (
     <Container className="pt-14 pb-20 md:py-20">
       <div className="max-w-2xl px-2 pb-4 font-display lg:mx-0">
-        <h2 className="text-3xl font-medium tracking-tighter text-amber-500">
-          Posts
-        </h2>
+        <h2 className="text-4xl font-semibold text-zinc-200">Posts</h2>
         <p className="mt-4 text-lg leading-normal tracking-tight text-zinc-400">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC.
@@ -117,11 +115,9 @@ export default function Posts({ posts }: any) {
               key={post._id}
               initial={{
                 opacity: 0,
-                translateX: -5,
-                translateY: -5,
               }}
-              animate={{ opacity: 1, translateX: 0, translateY: 0 }}
-              transition={{ duration: 0.25, delay: 0.1 + i * 0.2 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.2, delay: 0.1 + i * 0.1 }}
             >
               <PostPreview
                 key={post.slug}

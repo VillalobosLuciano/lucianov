@@ -27,9 +27,7 @@ export default function Projects({ projects }: any) {
   return (
     <Container className="pt-14 pb-20 md:py-20">
       <div className="max-w-2xl px-2 pb-4 font-display lg:mx-0">
-        <h2 className="text-3xl font-medium tracking-tighter text-amber-500">
-          Projects
-        </h2>
+        <h2 className="text-4xl font-semibold text-zinc-200">Projects</h2>
         <p className="mt-4 text-lg leading-normal tracking-tight text-zinc-400">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC.

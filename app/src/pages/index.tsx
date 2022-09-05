@@ -9,6 +9,10 @@ import FeaturedProjects from '@/components/projects/FeaturedProjects'
 import LatestPosts from '@/components/posts/LatestPosts'
 import Technologies from '../components/Technologies'
 import Intro from '@/components/Intro'
+import SectionHeader from '@/components/ui/SectionHeader'
+import { useRef, useEffect, useState } from 'react'
+import { useInView } from 'react-intersection-observer'
+import { InView } from 'react-intersection-observer'
 
 const Home: NextPageWithLayout = ({
   projects,
@@ -16,6 +20,8 @@ const Home: NextPageWithLayout = ({
   technologies,
   author,
 }: any) => {
+  const [inView, setInView] = useState(false)
+
   return (
     <>
       <Head>
@@ -27,9 +33,28 @@ const Home: NextPageWithLayout = ({
       </Head>
       <main className="mb-4">
         <Intro author={author} />
-
         <Technologies technologies={technologies} />
+        <InView onChange={setInView}>
+          {({ ref, inView }: any) => (
+            <SectionHeader
+              ref={ref}
+              inView={inView}
+              sectionName="projects"
+              SectionDescription="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC."
+            />
+          )}
+        </InView>
         <FeaturedProjects projects={overlayDrafts(projects)} />
+        <InView onChange={setInView}>
+          {({ ref, inView }: any) => (
+            <SectionHeader
+              ref={ref}
+              inView={inView}
+              sectionName="posts"
+              SectionDescription="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC."
+            />
+          )}
+        </InView>
         <LatestPosts posts={overlayDrafts(posts)} />
       </main>
     </>

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
+import AnimateGradient from '@/components/ui/AnimateGradient'
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode
@@ -24,6 +25,7 @@ export default function MyApp({
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
+      <AnimateGradient />
       {getLayout(
         <motion.div
           key={router.route}

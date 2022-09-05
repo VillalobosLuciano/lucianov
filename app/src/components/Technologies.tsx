@@ -10,14 +10,14 @@ export default function Technologies({ technologies }: any) {
 
   return (
     <Container>
-      <hr className="mt-16 mb-2 ml-4 w-6 border-2 border-teal-600/30 dark:border-amber-500/30 lg:mt-24" />
-      <div className="px-4">
-        <h2 className="text-3xl font-extrabold tracking-tight text-zinc-500 dark:text-zinc-300 sm:text-4xl md:mx-0">
-          Tech stack
-        </h2>
-        <p className="mt-2 leading-snug text-zinc-400">
-          My current toolbox for flexibility, speed, and readability in
-          development.
+      {/* <div className="max-w-2xl px-2 pb-8 font-display lg:mx-0">
+        <div className="flex items-center space-x-3">
+          <div className="h-0 w-0 border-t-[10px] border-l-[16px] border-b-[10px] border-t-transparent border-l-amber-500/50 border-b-transparent" />
+          <h2 className="text-4xl font-semibold text-zinc-200">Tech Stack</h2>
+        </div>
+        <p className="mt-4 text-lg leading-normal tracking-tight text-zinc-400">
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It
+          has roots in a piece of classical Latin literature from 45 BC.
         </p>
       </div>
       <div className="mx-auto px-4 pt-8">
@@ -101,7 +101,7 @@ export default function Technologies({ technologies }: any) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </Container>
   )
 }
