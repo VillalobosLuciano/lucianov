@@ -13,6 +13,7 @@ import SectionHeader from '@/components/ui/SectionHeader'
 import { useRef, useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { InView } from 'react-intersection-observer'
+import Header from '@/components/Header'
 
 const Home: NextPageWithLayout = ({
   projects,
@@ -32,14 +33,15 @@ const Home: NextPageWithLayout = ({
         />
       </Head>
       <main className="mb-4">
-        <Intro author={author} />
-        <Technologies technologies={technologies} />
+        {/* <Intro author={author} /> */}
+        <Header author={author} technologies={technologies} />
+        {/* <Technologies technologies={technologies} /> */}
         <InView onChange={setInView}>
           {({ ref, inView }: any) => (
             <SectionHeader
               ref={ref}
               inView={inView}
-              sectionName="projects"
+              sectionName="featured projects"
               SectionDescription="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC."
             />
           )}
@@ -50,7 +52,7 @@ const Home: NextPageWithLayout = ({
             <SectionHeader
               ref={ref}
               inView={inView}
-              sectionName="posts"
+              sectionName="latest posts"
               SectionDescription="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC."
             />
           )}

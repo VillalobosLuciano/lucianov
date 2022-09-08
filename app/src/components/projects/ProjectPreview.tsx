@@ -19,7 +19,7 @@ export default function ProjectPreview({
     <>
       <div
         onClick={handleClick}
-        className="relative mt-4 transform cursor-pointer overflow-hidden rounded-2xl bg-zinc-600/10 px-5 py-6 ring-1 ring-white/10 backdrop-blur transition-colors duration-200 hover:bg-zinc-600/20 hover:ring-amber-500/30"
+        className="relative mt-4 transform cursor-pointer overflow-hidden rounded-2xl bg-zinc-800/30 px-5 py-6 ring-1 ring-white/10 backdrop-blur transition-colors duration-200 hover:bg-zinc-800/50 hover:ring-amber-500/30"
       >
         <div className="absolute top-0 left-20 right-11 h-px bg-gradient-to-r from-amber-300/0 via-amber-500/50 to-amber-300/0" />
         <div className="relative h-52 w-full">
@@ -31,13 +31,11 @@ export default function ProjectPreview({
           />
         </div>
         <div className="mt-6 px-1 font-display lg:mb-0">
-          <h3 className="text-2xl font-semibold text-zinc-200 sm:text-lg">
-            {title}
-          </h3>
-          <h2 className="pb-2 text-sm capitalize text-amber-500/90">
+          <h3 className="text-2xl font-semibold text-zinc-200">{title}</h3>
+          <h2 className="mb-2 text-sm capitalize text-amber-500/90">
             {projectType}
           </h2>
-          <p className="text-sm text-zinc-400">{intro}</p>
+          <p className="pt-1 leading-5 text-zinc-400">{intro}</p>
         </div>
       </div>
     </>

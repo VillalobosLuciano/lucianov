@@ -13,25 +13,44 @@ const SectionHeader = forwardRef<HTMLDivElement, Props>(
   ({ sectionName, SectionDescription, inView }, ref) => {
     return (
       <Container>
-        <div
-          ref={ref}
-          className="max-w-2xl px-2 pt-32 pb-8 font-display lg:mx-0"
-        >
-          <div className="flex items-center space-x-3">
-            <div
+        <div ref={ref} className="max-w-2xl px-2 pb-10 font-display">
+          <div className="flex items-center space-x-2">
+            {/* <div
               className={clsx(
-                'h-0 w-0 border-t-[10px] border-l-[16px] border-b-[10px] border-t-transparent border-b-transparent transition-colors duration-1000',
+                'mt-1.5 h-7 w-7 transition-colors duration-1000',
                 {
-                  'border-l-amber-500/90': inView,
-                  'border-l-amber-500/20': !inView,
+                  'text-amber-500/60': inView,
+                  'text-zinc-500': !inView,
                 }
               )}
-            />
-            <h2 className="text-4xl font-semibold capitalize text-zinc-200">
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={2}
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+                />
+              </svg>
+            </div> */}
+            <h2
+              className={clsx(
+                'text-4xl font-semibold capitalize transition-colors duration-1000',
+                {
+                  'text-zinc-300': inView,
+                  'text-zinc-500': !inView,
+                }
+              )}
+            >
               {sectionName}
             </h2>
           </div>
-          <p className="mt-4 text-lg leading-normal tracking-tight text-zinc-400">
+          <p className="mt-6 text-lg leading-normal tracking-tight text-zinc-400">
             {SectionDescription}
           </p>
         </div>

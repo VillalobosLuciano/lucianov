@@ -6,7 +6,7 @@ import ProjectsSlider from '@/components/ui/ProjectsSlider'
 export default function FeaturedProjects({ projects }: any) {
   const featuredProjects = projects.slice(0, 3)
   return (
-    <Container>
+    <Container className="mb-32">
       <ProjectsSlider projects={featuredProjects} />
       {projects.length ? (
         <div className="mx-auto hidden max-w-2xl grid-cols-1 gap-1 text-sm sm:grid-cols-2 md:grid lg:max-w-none lg:grid-cols-3">

@@ -5,7 +5,7 @@ import PostPreview from '@/components/posts/PostPreview'
 export default function LatestPosts({ posts }: any) {
   const latestPosts = posts.slice(0, 2)
   return (
-    <Container>
+    <Container className="mb-32">
       <div className="grid grid-cols-1 space-y-10 divide-y divide-teal-600/10 dark:divide-amber-500/10">
         {latestPosts.map((post: any) => (
           <PostPreview
