@@ -24,10 +24,10 @@ export default function ImageSlider({ projects }: any) {
 
   return (
     <>
-      <div className="relative mb-6 md:hidden">
+      <div className="mb-6 md:hidden">
         <div ref={sliderRef} className="keen-slider">
           {projects.map((project: any) => (
-            <div className="keen-slider__slide px-3 pb-3" key={project._id}>
+            <div className="keen-slider__slide px-4" key={project._id}>
               <ProjectPreview
                 slug={project.slug}
                 coverImage={project.coverImage}
@@ -40,7 +40,7 @@ export default function ImageSlider({ projects }: any) {
         </div>
       </div>
       {loaded && instanceRef.current && (
-        <div className="mb-6 flex justify-center space-x-3 md:hidden">
+        <div className="mb-16 flex justify-center space-x-1 md:hidden">
           {slides?.map((_, idx) => {
             const active = currentSlide === idx
             return (
@@ -49,9 +49,12 @@ export default function ImageSlider({ projects }: any) {
                 onClick={() => {
                   instanceRef.current?.moveToIdx(idx)
                 }}
-                className={clsx('cursor pointer h-1 w-4 rounded bg-zinc-500', {
-                  'bg-amber-500': active,
-                })}
+                className={clsx(
+                  'cursor pointer z-1 h-[2px] w-10 rounded bg-zinc-500/60',
+                  {
+                    'bg-amber-500/80': active,
+                  }
+                )}
               ></button>
             )
           })}

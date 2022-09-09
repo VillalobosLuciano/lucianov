@@ -25,24 +25,24 @@ export default function Projects({ projects }: any) {
   }
 
   return (
-    <Container className="pt-14 pb-20 md:py-20">
-      <div className="max-w-2xl px-2 pb-4 font-display lg:mx-0">
+    <Container className="py-20">
+      <div className="max-w-2xl px-2 pb-4 lg:mx-0">
         <h2 className="text-4xl font-semibold text-zinc-200">Projects</h2>
-        <p className="mt-4 text-lg leading-normal tracking-tight text-zinc-400">
+        <p className="mt-4 mb-6 text-lg leading-normal tracking-tight text-zinc-400">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC.
         </p>
       </div>
-      <div className="mt-8 mb-6 flex flex-wrap gap-4 px-2">
+      <div className="mb-6 flex flex-wrap gap-4 px-2">
         {projectTypes.map((type: any, index: number) => (
           <button
             key={type}
             className={clsx(
-              'relative cursor-pointer rounded border-transparent px-4 py-1.5 font-display text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
+              'relative cursor-pointer rounded border-transparent px-4 py-1.5 text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
               {
-                'border border-teal-600/30 bg-amber-500/5 text-teal-600 dark:border-amber-500/30 dark:text-amber-500':
+                'border border-teal-600/30 bg-zinc-800/30 text-teal-600 dark:border-amber-500/50 dark:text-zinc-100':
                   type === selected,
-                'border border-white/5 text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300 dark:hover:text-zinc-200':
+                'border border-white/5 text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300/90 dark:hover:text-zinc-200':
                   type !== selected,
               }
             )}
@@ -53,27 +53,27 @@ export default function Projects({ projects }: any) {
             <AnimatePresence>
               {hoveredIndex === index && (
                 <motion.span
-                  className="absolute inset-0 rounded bg-amber-500/5"
+                  className="absolute inset-0 rounded bg-zinc-800/30"
                   layoutId="hoverBackground"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, transition: { duration: 0.15 } }}
                   exit={{
                     opacity: 0,
-                    transition: { duration: 0.15, delay: 0.2 },
+                    transition: { duration: 0.15, delay: 0.1 },
                   }}
                 />
               )}
             </AnimatePresence>
-            {type}
+            <span className="relative z-10 capitalize">{type}</span>
           </button>
         ))}
       </div>
       <SectionSeparator mt={0} mb={4} />
-      <div className="mx-auto grid max-w-2xl grid-cols-1 gap-1 text-sm sm:grid-cols-2 lg:max-w-none lg:grid-cols-3">
+      <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-9 gap-y-6 text-sm sm:grid-cols-2 lg:max-w-none lg:grid-cols-3">
         {projectsList.length ? (
           projectsList.map((project: any, i: number) => (
             <motion.div
-              className="px-3 pb-3"
+              className="px-4 md:px-0"
               key={project._id}
               initial={{
                 opacity: 0,
@@ -81,7 +81,7 @@ export default function Projects({ projects }: any) {
                 translateY: -5,
               }}
               animate={{ opacity: 1, translateX: 0, translateY: 0 }}
-              transition={{ duration: 0.25, delay: 0.1 + i * 0.2 }}
+              transition={{ duration: 0.3, delay: 0.05 + i * 0.1 }}
             >
               <ProjectPreview
                 slug={project.slug}

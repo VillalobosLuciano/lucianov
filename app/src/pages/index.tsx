@@ -41,7 +41,7 @@ const Home: NextPageWithLayout = ({
             <SectionHeader
               ref={ref}
               inView={inView}
-              sectionName="featured projects"
+              sectionName="projects"
               SectionDescription="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC."
             />
           )}

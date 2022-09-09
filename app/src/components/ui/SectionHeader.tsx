@@ -13,34 +13,11 @@ const SectionHeader = forwardRef<HTMLDivElement, Props>(
   ({ sectionName, SectionDescription, inView }, ref) => {
     return (
       <Container>
-        <div ref={ref} className="max-w-2xl px-2 pb-10 font-display">
-          <div className="flex items-center space-x-2">
-            {/* <div
-              className={clsx(
-                'mt-1.5 h-7 w-7 transition-colors duration-1000',
-                {
-                  'text-amber-500/60': inView,
-                  'text-zinc-500': !inView,
-                }
-              )}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </div> */}
+        <div ref={ref} className="max-w-2xl px-2 pb-4 md:pb-10">
+          <div className="flex flex-col">
             <h2
               className={clsx(
-                'text-4xl font-semibold capitalize transition-colors duration-1000',
+                'text-3xl font-bold capitalize leading-snug tracking-tight transition-colors duration-1000 md:text-4xl',
                 {
                   'text-zinc-300': inView,
                   'text-zinc-500': !inView,
@@ -49,8 +26,17 @@ const SectionHeader = forwardRef<HTMLDivElement, Props>(
             >
               {sectionName}
             </h2>
+
+            <hr
+              className={clsx('mb-1 h-[3px] w-24 border-zinc-900', {
+                '[background-image:linear-gradient(3deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#fb79004c_67.19%,rgba(236,72,153,0)_100%)]':
+                  inView,
+                '[background-image:linear-gradient(3deg,rgba(56,189,248,0)_0%,#c3c3c3_32.29%,#ffffff4a_67.19%,rgba(236,72,153,0)_100%)]':
+                  !inView,
+              })}
+            />
           </div>
-          <p className="mt-6 text-lg leading-normal tracking-tight text-zinc-400">
+          <p className="pt-3 pb-2 leading-relaxed text-zinc-400">
             {SectionDescription}
           </p>
         </div>

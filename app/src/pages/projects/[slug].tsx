@@ -5,8 +5,6 @@ import { usePreviewSubscription } from '../../lib/sanity'
 import SanityImage from '@/components/SanityImage'
 import ErrorPage from 'next/error'
 import { ChevronLeftIcon } from '@heroicons/react/solid'
-import Image from 'next/image'
-import background from '@/images/background.png'
 import { Prose } from '@/components/Prose'
 import NoSsr from '@/components/NoSsr'
 import ImageSlider from '@/components/ui/ImageSlider'
@@ -31,17 +29,15 @@ export default function Project({ data = {}, preview }: any) {
   return (
     <NoSsr>
       <div className="relative -mt-[5.75rem] pt-[5.75rem]">
-        <div className="absolute inset-0 overflow-hidden">
-          <Image
-            src={background}
-            alt="background image"
-            layout="fill"
-            className="absolute bottom-0 hidden lg:block"
-          />
-        </div>
-
         <div className="relative">
           <div className="relative mx-auto max-w-[85rem] px-4 pt-16 sm:px-6 lg:px-8 lg:pt-20">
+            <button
+              className="-ml-1 mt-2 mb-12 flex items-center decoration-amber-500/50 transition-colors hover:underline dark:text-zinc-300 dark:hover:text-zinc-200"
+              onClick={() => router.back()}
+            >
+              <ChevronLeftIcon className="h-5 " />
+              Back
+            </button>
             <div className="mx-auto grid max-w-[40rem] grid-cols-1 gap-y-16 gap-x-6 lg:max-w-none lg:grid-cols-3">
               <div className="flex flex-col lg:py-12">
                 <h1 className="mt-3 text-4xl font-extrabold leading-none tracking-tight text-zinc-200 sm:text-5xl sm:leading-[3.5rem]">
@@ -50,7 +46,7 @@ export default function Project({ data = {}, preview }: any) {
                 <p className="order-first text-xl font-semibold leading-7 text-amber-500">
                   {project?.projectType}
                 </p>
-                <p className="mt-6 font-display leading-7 text-zinc-300">
+                <p className="mt-6  leading-7 text-zinc-300">
                   <PortableText value={project?.description} />
                 </p>
                 <div className="mt-6 grid max-w-[18rem] grid-cols-2 gap-y-5">
@@ -72,7 +68,7 @@ export default function Project({ data = {}, preview }: any) {
                 </div>
 
                 <div className="mt-10 flex gap-5">
-                  <button className="inline-flex justify-center rounded-lg bg-amber-500/90 py-3 px-4 font-semibold text-zinc-100 transition-colors hover:bg-amber-500">
+                  <button className="inline-flex justify-center rounded-lg bg-amber-500/90 py-3 px-4 text-zinc-100 transition-colors hover:bg-amber-500 md:px-6">
                     <span className="flex items-center">
                       Live preview
                       <svg
@@ -83,7 +79,7 @@ export default function Project({ data = {}, preview }: any) {
                       </svg>
                     </span>
                   </button>
-                  <button className="inline-flex justify-center rounded-lg border border-amber-500/70 py-3 px-4 font-semibold text-zinc-200 transition-colors hover:border-amber-500 hover:text-zinc-100">
+                  <button className="inline-flex justify-center rounded-lg border border-amber-500/70 py-3 px-4 text-zinc-200 transition-colors hover:border-amber-500 hover:text-zinc-100 md:px-6">
                     <span className="flex items-center">
                       Source code
                       <svg
@@ -105,14 +101,14 @@ export default function Project({ data = {}, preview }: any) {
                   <div className="absolute -top-12 bottom-0 -right-4 w-px bg-zinc-100/[0.1] [mask-image:linear-gradient(to_top,white_4rem,white_calc(100%-4rem),transparent)]"></div>
                   <div className="absolute -top-12 right-10 mt-px flex h-8 items-end overflow-hidden">
                     <div className="-mb-px flex h-[2px] w-80 -scale-x-100">
-                      <div className="w-full flex-none blur-sm [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,rgba(236,72,153,0.3)_67.19%,rgba(236,72,153,0)_100%)]"></div>
-                      <div className="-ml-[100%] w-full flex-none blur-[1px] [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,rgba(236,72,153,0.3)_67.19%,rgba(236,72,153,0)_100%)]"></div>
+                      <div className="w-full flex-none blur-sm [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#f1540bc6_67.19%,rgba(236,72,153,0)_100%)]"></div>
+                      <div className="-ml-[100%] w-full flex-none blur-[1px] [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#cc620b4c_67.19%,rgba(236,72,153,0)_100%)]"></div>
                     </div>
                   </div>
                   <div className="absolute bottom-0 -left-48 flex h-8 items-end overflow-hidden">
                     <div className="-mb-px flex h-[2px] w-80 -scale-x-100">
-                      <div className="w-full flex-none blur-sm [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,rgba(236,72,153,0.3)_67.19%,rgba(236,72,153,0)_100%)]"></div>
-                      <div className="-ml-[100%] w-full flex-none blur-[1px] [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,rgba(236,72,153,0.3)_67.19%,rgba(236,72,153,0)_100%)]"></div>
+                      <div className="w-full flex-none blur-sm [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#ed86094c_67.19%,rgba(236,72,153,0)_100%)]"></div>
+                      <div className="-ml-[100%] w-full flex-none blur-[1px] [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#e15c034c_67.19%,rgba(236,72,153,0)_100%)]"></div>
                     </div>
                   </div>
                 </div>

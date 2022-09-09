@@ -64,15 +64,15 @@ export default function Posts({ posts }: any) {
   }, [selected, posts])
 
   return (
-    <Container className="pt-14 pb-20 md:py-20">
-      <div className="max-w-2xl px-2 pb-4 font-display lg:mx-0">
+    <Container className="py-20">
+      <div className="max-w-2xl px-2 pb-4  lg:mx-0">
         <h2 className="text-4xl font-semibold text-zinc-200">Posts</h2>
-        <p className="mt-4 text-lg leading-normal tracking-tight text-zinc-400">
+        <p className="mb-6 mt-4 text-lg leading-normal tracking-tight text-zinc-400">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC.
         </p>
       </div>
-      <div className="mt-8 mb-6 items-center gap-x-4 px-2 md:flex">
+      <div className="mb-6 items-center gap-x-4 px-2 md:flex">
         <Search handleSearch={handleSearch} searchInput={searchInput} />
         <Listbox
           as="div"
@@ -81,7 +81,7 @@ export default function Posts({ posts }: any) {
           onChange={setSelected}
         >
           <Listbox.Label className="sr-only">Theme</Listbox.Label>
-          <Listbox.Button className="relative w-full cursor-default rounded-md border border-amber-500/30 bg-zinc-800/10 py-2 pl-3 pr-10 text-left shadow-md focus:border-amber-500/30 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+          <Listbox.Button className="relative w-full cursor-default rounded-md border border-amber-500/50 bg-zinc-800/10 py-2 pl-3 pr-10 text-left shadow-md focus:border-amber-500/50 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
             <span className="block truncate">{selected}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronDownIcon
@@ -90,7 +90,7 @@ export default function Posts({ posts }: any) {
               />
             </span>
           </Listbox.Button>
-          <Listbox.Options className="mt-2 w-full rounded-lg border border-amber-500/30 bg-[#1a1a1c] text-zinc-300 md:absolute md:w-60">
+          <Listbox.Options className="mt-2 w-full rounded-lg border border-amber-500/50 bg-[#1a1a1c] text-zinc-300 md:absolute md:w-60">
             {tags.map((tag: any) => (
               <Listbox.Option
                 key={tag}
@@ -108,7 +108,7 @@ export default function Posts({ posts }: any) {
         </Listbox>
       </div>
       <SectionSeparator mt={0} mb={4} />
-      <div className="grid grid-cols-1 space-y-10 divide-y divide-teal-600/10 dark:divide-amber-500/10">
+      <div className="grid grid-cols-1 space-y-10 divide-y divide-teal-600/10 dark:divide-zinc-400/10">
         {postsList.length ? (
           postsList.map((post: any, i: number) => (
             <motion.div

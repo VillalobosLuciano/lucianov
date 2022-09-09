@@ -47,7 +47,7 @@ export function Prose({ content, className, ...props }: Props) {
         className,
         'prose prose-slate max-w-none dark:prose-invert dark:text-zinc-400',
         // headings
-        'prose-headings:scroll-mt-28 prose-headings:font-display prose-headings:font-normal lg:prose-headings:scroll-mt-[8.5rem]',
+        'prose-headings:font-normal',
         // lead
         'prose-lead:text-zinc-500 dark:prose-lead:text-zinc-400',
         // links

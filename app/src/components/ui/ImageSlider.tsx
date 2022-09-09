@@ -38,9 +38,13 @@ export default function ImageSlider({ images }: any) {
   return (
     <>
       <div className="relative mb-6">
-        <p className="mb-2 text-lg font-semibold leading-7 text-amber-500 md:hidden">
-          Screenshots
-        </p>
+        <p className="text-2xl font-bold capitalize md:hidden">Screenshots</p>
+
+        <hr
+          className="mb-6 h-[3px] w-24 border-zinc-900
+            [background-image:linear-gradient(3deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#fb79004c_67.19%,rgba(236,72,153,0)_100%)]"
+        />
+
         <div ref={sliderRef} className="keen-slider">
           {images.map((image: any, i: number) => (
             <div
@@ -60,7 +64,7 @@ export default function ImageSlider({ images }: any) {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute bottom-0 hidden w-full flex-col rounded-b-2xl border border-zinc-100/5 bg-zinc-900/70 px-4 py-3 font-display backdrop-blur-lg md:flex"
+                  className="absolute bottom-0 hidden w-full flex-col rounded-b-2xl border border-zinc-100/5 bg-zinc-900/70 px-4 py-3  backdrop-blur-lg md:flex"
                 >
                   <div className="flex items-center space-x-4">
                     <p className="text-zinc-300">
@@ -68,9 +72,7 @@ export default function ImageSlider({ images }: any) {
                       <span className="text-zinc-400">/</span>
                       {images.length}
                     </p>
-                    <p className="font-display text-lg text-amber-500">
-                      {image?.caption}
-                    </p>
+                    <p className=" text-lg text-amber-500">{image?.caption}</p>
                   </div>
                 </motion.div>
               )}
@@ -108,7 +110,7 @@ export default function ImageSlider({ images }: any) {
         )}
       </div>
       {loaded && instanceRef.current && (
-        <div className="mb-6 flex justify-center space-x-3 md:hidden">
+        <div className="mb-6 flex justify-center space-x-1 md:hidden">
           {slides?.map((_, idx) => {
             const active = currentSlide === idx
             return (
@@ -117,9 +119,12 @@ export default function ImageSlider({ images }: any) {
                 onClick={() => {
                   instanceRef.current?.moveToIdx(idx)
                 }}
-                className={clsx('cursor pointer h-1 w-4 rounded bg-zinc-500', {
-                  'bg-amber-500': active,
-                })}
+                className={clsx(
+                  'cursor pointer z-1 h-[2px] w-10 rounded bg-zinc-500/60',
+                  {
+                    'bg-amber-500/80': active,
+                  }
+                )}
               ></button>
             )
           })}
