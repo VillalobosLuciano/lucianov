@@ -27,7 +27,7 @@ export default function ImageSlider({ projects }: any) {
       <div className="mb-6 md:hidden">
         <div ref={sliderRef} className="keen-slider">
           {projects.map((project: any) => (
-            <div className="keen-slider__slide px-4" key={project._id}>
+            <div className="keen-slider__slide px-4 py-1" key={project._id}>
               <ProjectPreview
                 slug={project.slug}
                 coverImage={project.coverImage}
