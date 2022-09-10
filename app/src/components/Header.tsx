@@ -1,13 +1,10 @@
 import React from 'react'
 import { Container } from './Container'
 import SanityImage from './SanityImage'
-import Technologies from './Technologies'
-import Image from 'next/image'
-import background from '@/images/background.png'
 
-export default function Header({ author, technologies }: any) {
+export default function Header({ author }: any) {
   return (
-    <Container className="mt-14 mb-2 md:mt-44 md:mb-28">
+    <Container className="mt-14 mb-24 md:mt-36 md:mb-32">
       <div className="flex flex-col-reverse justify-between px-2 md:flex-row md:items-center md:px-0">
         <div className="flex-col space-y-5 md:w-2/3">
           <h1 className="text-3xl font-bold leading-snug tracking-tight text-zinc-200 md:text-5xl">
@@ -30,12 +27,6 @@ export default function Header({ author, technologies }: any) {
             />
           </div>
         </div>
-      </div>
-      <div className="flex px-2 pt-12 md:px-0 md:pt-12 md:pb-36">
-        <Technologies technologies={technologies} />
-      </div>
-      <div className="relative pt-16">
-        <div className="absolute -right-8 bottom-0 -left-8 hidden h-px opacity-80 [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#fb79004c_67.19%,rgba(236,72,153,0)_100%)] md:flex"></div>
       </div>
     </Container>
   )

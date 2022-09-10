@@ -35,14 +35,24 @@ const Home: NextPageWithLayout = ({
       <main className="mb-4">
         {/* <Intro author={author} /> */}
         <Header author={author} technologies={technologies} />
-        {/* <Technologies technologies={technologies} /> */}
+        <InView onChange={setInView}>
+          {({ ref, inView }: any) => (
+            <SectionHeader
+              ref={ref}
+              inView={inView}
+              sectionName="Tech stack"
+              SectionDescription="Contrary to popular belief, Lorem Ipsum is not simply random text."
+            />
+          )}
+        </InView>
+        <Technologies technologies={technologies} />
         <InView onChange={setInView}>
           {({ ref, inView }: any) => (
             <SectionHeader
               ref={ref}
               inView={inView}
               sectionName="projects"
-              SectionDescription="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC."
+              SectionDescription="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature."
             />
           )}
         </InView>
@@ -53,7 +63,7 @@ const Home: NextPageWithLayout = ({
               ref={ref}
               inView={inView}
               sectionName="latest posts"
-              SectionDescription="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC."
+              SectionDescription="Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature."
             />
           )}
         </InView>
