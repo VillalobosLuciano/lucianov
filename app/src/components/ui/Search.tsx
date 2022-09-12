@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 export default function Search({ handleSearch, searchInput }: any) {
   return (
-    <div className="relative w-full md:w-1/2">
+    <div className="relative w-full md:w-[450px]">
       <input
         aria-label="Search posts"
         type="text"

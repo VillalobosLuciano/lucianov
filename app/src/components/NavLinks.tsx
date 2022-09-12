@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
+import Underline from '@/components/icons/Underline';
 
 type Navigation = {
   label: string
@@ -21,11 +22,11 @@ export function NavLinks({ navigation }: { navigation: Navigation[] }) {
             onClick={() => router.push(item.pathname)}
             key={item.pathname}
             className={clsx(
-              'relative cursor-pointer rounded border-transparent px-4 py-1.5 text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
+              'relative cursor-pointer font-display border-transparent px-4 py-1.5 text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
               {
-                'border border-teal-600/30 bg-zinc-800/30 text-teal-600 dark:border-amber-500/50 dark:text-zinc-100':
+                'text-teal-600 dark:text-zinc-100':
                   isActive,
-                'border border-white/5 text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300/90 dark:hover:text-zinc-200':
+                'text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300/90':
                   !isActive,
               }
             )}
@@ -35,7 +36,7 @@ export function NavLinks({ navigation }: { navigation: Navigation[] }) {
             <AnimatePresence>
               {hoveredIndex === index && (
                 <motion.span
-                  className="absolute inset-0 rounded bg-zinc-800/30"
+                  className="absolute inset-0 rounded bg-zinc-800/40"
                   layoutId="hoverBackground"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, transition: { duration: 0.15 } }}
@@ -46,7 +47,19 @@ export function NavLinks({ navigation }: { navigation: Navigation[] }) {
                 />
               )}
             </AnimatePresence>
-            <span className="relative z-10 capitalize">{item.label}</span>
+            <div className='relative w-full flex flex-col items-center z-10 capitalize'>
+
+            <span>{item.label}</span>
+             <Underline
+              className={clsx(
+                '-mt-1.5 h-4 w-full transition-opacity duration-500',
+                {
+                  'opacity-100': isActive,
+                  'opacity-0': !isActive,
+                }
+              )}
+            />
+            </div>
           </div>
         )
       })}

@@ -25,7 +25,7 @@ export default function Projects({ projects }: any) {
   }
 
   return (
-    <Container className="py-20">
+    <Container className="py-24">
       <div className="max-w-2xl px-2 pb-4 lg:mx-0">
         <h2 className="text-4xl font-semibold text-zinc-200">Projects</h2>
         <p className="mt-4 mb-6 text-lg leading-normal tracking-tight text-zinc-400">
@@ -38,11 +38,11 @@ export default function Projects({ projects }: any) {
           <button
             key={type}
             className={clsx(
-              'relative cursor-pointer rounded border-transparent px-4 py-1.5 text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
+              'relative cursor-pointer rounded-lg border-transparent px-3 py-1.5 text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
               {
                 'border border-teal-600/30 bg-zinc-800/30 text-teal-600 dark:border-amber-500/50 dark:text-zinc-100':
                   type === selected,
-                'border border-white/5 text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300/90 dark:hover:text-zinc-200':
+                'border border-zinc-400/30 text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300/90 dark:hover:text-zinc-200':
                   type !== selected,
               }
             )}
@@ -89,6 +89,7 @@ export default function Projects({ projects }: any) {
                 title={project.title}
                 projectType={project.projectType}
                 intro={project.intro}
+                technologies={project.technologies}
               />
             </motion.div>
           ))

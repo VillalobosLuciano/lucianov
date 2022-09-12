@@ -5,6 +5,7 @@ import SanityImage from '../SanityImage'
 import clsx from 'clsx'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
 import { motion } from 'framer-motion'
+import Underline from '@/components/icons/Underline';
 
 export default function ImageSlider({ images }: any) {
   const [currentSlide, setCurrentSlide] = React.useState(0)
@@ -37,14 +38,11 @@ export default function ImageSlider({ images }: any) {
 
   return (
     <>
-      <div className="relative mb-6">
-        <p className="text-2xl font-bold capitalize md:hidden">Screenshots</p>
-
-        <hr
-          className="mb-6 h-[3px] w-24 border-zinc-900
-            [background-image:linear-gradient(3deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#fb79004c_67.19%,rgba(236,72,153,0)_100%)]"
-        />
-
+      <div className="relative mb-8">
+        <div className='md:hidden mb-5'>
+          <p className="text-3xl font-bold capitalize leading-snug tracking-tight transition-colors duration-1000 md:text-4xl">Screenshots</p>
+          <Underline className='-mt-2 -ml-1 flex h-4 w-fit'/>
+        </div>
         <div ref={sliderRef} className="keen-slider">
           {images.map((image: any, i: number) => (
             <div
@@ -110,7 +108,7 @@ export default function ImageSlider({ images }: any) {
         )}
       </div>
       {loaded && instanceRef.current && (
-        <div className="mb-6 flex justify-center space-x-1 md:hidden">
+        <div className="mb-8 flex justify-center space-x-1 md:hidden">
           {slides?.map((_, idx) => {
             const active = currentSlide === idx
             return (

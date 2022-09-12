@@ -27,7 +27,7 @@ export default function Posts({ data = {}, preview }: any) {
   return (
     <Container className="max-w-4xl pb-24">
       <button
-        className="mt-16 flex items-center decoration-amber-500/50 transition-colors hover:underline dark:text-zinc-300 dark:hover:text-zinc-200"
+        className="mt-16 flex items-center transition-colors dark:text-zinc-300 dark:hover:text-zinc-200"
         onClick={() => router.back()}
       >
         <ChevronLeftIcon className="h-5 " />

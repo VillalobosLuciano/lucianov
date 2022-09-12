@@ -4,7 +4,7 @@ import { Container } from '@/components/Container'
 
 import Search from '@/components/ui/Search'
 import { Listbox } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/solid'
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/solid'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import SectionSeparator from '../ui/SectionSeparator'
@@ -14,6 +14,7 @@ export default function Posts({ posts }: any) {
   const [searchInput, setSearchInput] = useState('')
   const [postsList, setPostsList] = useState(posts)
   const [selected, setSelected] = useState('All')
+  // const [open, setOpen] = useState(false)
 
   const router = useRouter()
 
@@ -64,7 +65,7 @@ export default function Posts({ posts }: any) {
   }, [selected, posts])
 
   return (
-    <Container className="py-20">
+    <Container className="py-24">
       <div className="max-w-2xl px-2 pb-4  lg:mx-0">
         <h2 className="text-4xl font-semibold text-zinc-200">Posts</h2>
         <p className="mb-6 mt-4 text-lg leading-normal tracking-tight text-zinc-400">
@@ -76,21 +77,33 @@ export default function Posts({ posts }: any) {
         <Search handleSearch={handleSearch} searchInput={searchInput} />
         <Listbox
           as="div"
-          className="mt-4 w-full md:mt-0 md:w-60"
+          className="mt-4 w-full md:mt-0 md:w-32"
           value={selected}
           onChange={setSelected}
         >
+          {({open}) => (
+            <>
+            
           <Listbox.Label className="sr-only">Theme</Listbox.Label>
-          <Listbox.Button className="relative w-full cursor-default rounded-md border border-amber-500/50 bg-zinc-800/10 py-2 pl-3 pr-10 text-left shadow-md focus:border-amber-500/50 focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
+          <Listbox.Button
+            className="relative w-full cursor-default rounded-md border border-amber-500/50 bg-zinc-800/10 py-2 pl-3 pr-10 text-left shadow-md focus:border-amber-500/50 sm:text-sm"
+          >
             <span className="block truncate">{selected}</span>
-            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-              <ChevronDownIcon
-                className="h-6 w-6 text-amber-500/90"
-                aria-hidden="true"
-              />
+            <span className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-2">
+              {open ? (
+                <ChevronUpIcon
+                  className="h-6 w-6 text-amber-500/90"
+                  aria-hidden="true"
+                />
+              ) : (
+                <ChevronDownIcon
+                  className="h-6 w-6 text-amber-500/90"
+                  aria-hidden="true"
+                />
+              )}
             </span>
           </Listbox.Button>
-          <Listbox.Options className="mt-2 w-full rounded-lg border border-amber-500/50 bg-[#1a1a1c] text-zinc-300 md:absolute md:w-60">
+          <Listbox.Options className="mt-2 w-full rounded-lg border border-amber-500/50 bg-[#1a1a1c] text-zinc-300 md:absolute md:w-32">
             {tags.map((tag: any) => (
               <Listbox.Option
                 key={tag}
@@ -105,6 +118,8 @@ export default function Posts({ posts }: any) {
               </Listbox.Option>
             ))}
           </Listbox.Options>
+            </>
+          )}
         </Listbox>
       </div>
       <SectionSeparator mt={0} mb={4} />

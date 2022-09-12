@@ -34,13 +34,14 @@ export default function ImageSlider({ projects }: any) {
                 title={project.title}
                 projectType={project.projectType}
                 intro={project.intro}
+                technologies={project.technologies}
               />
             </div>
           ))}
         </div>
       </div>
       {loaded && instanceRef.current && (
-        <div className="mb-16 flex justify-center space-x-1 md:hidden">
+        <div className="mb-14 flex justify-center space-x-1 md:hidden">
           {slides?.map((_, idx) => {
             const active = currentSlide === idx
             return (

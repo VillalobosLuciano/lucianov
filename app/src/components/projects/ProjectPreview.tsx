@@ -8,6 +8,7 @@ export default function ProjectPreview({
   title,
   projectType,
   intro,
+  technologies
 }: any) {
   const router = useRouter()
 
@@ -18,7 +19,7 @@ export default function ProjectPreview({
   return (
     <div
       onClick={handleClick}
-      className="relative mt-4 transform cursor-pointer overflow-hidden rounded-2xl bg-zinc-800/30 px-4 pt-5 pb-6 ring-1 ring-white/10 backdrop-blur transition-colors duration-200 hover:bg-zinc-800/50 hover:ring-amber-500/30"
+      className="relative mt-4 transform cursor-pointer group overflow-hidden rounded-2xl bg-zinc-800/30 px-4 pt-5 pb-4 ring-1 ring-white/10 backdrop-blur transition-colors duration-200 hover:bg-zinc-800/50 hover:ring-amber-500/30"
     >
       <div className="absolute top-0 left-20 right-11 h-px bg-gradient-to-r from-amber-300/0 via-amber-500/50 to-amber-300/0" />
       <div className="relative h-52 w-full">
@@ -36,6 +37,17 @@ export default function ProjectPreview({
         </h2>
         <p className="pt-1 leading-5 text-zinc-400">{intro}</p>
       </div>
+         <div className="mt-6 flex w-full space-x-4 items-center group-hover:border-amber-500/30 border-t border-white/10">
+            {technologies?.map((tech: any, i: number) => (
+              <div key={i} className="mt-3 relative h-[24px] opacity-80 w-[26px]">
+                <SanityImage
+                  src={tech?.logo}
+                  alt={tech?.name}
+                  layout="fill"
+                />
+              </div>
+            ))}
+        </div>
     </div>
   )
 }

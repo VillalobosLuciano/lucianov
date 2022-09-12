@@ -9,6 +9,8 @@ import { Prose } from '@/components/Prose'
 import NoSsr from '@/components/NoSsr'
 import ImageSlider from '@/components/ui/ImageSlider'
 import { PortableText } from '@portabletext/react'
+import { motion } from 'framer-motion';
+import Underline from '@/components/icons/Underline';
 
 export default function Project({ data = {}, preview }: any) {
   const router = useRouter()
@@ -28,47 +30,52 @@ export default function Project({ data = {}, preview }: any) {
 
   return (
     <NoSsr>
-      <div className="relative -mt-[5.75rem] pt-[5.75rem]">
-        <div className="relative">
+      <div className="relative px-1">
+       
           <div className="relative mx-auto max-w-[85rem] px-4 pt-16 sm:px-6 lg:px-8 lg:pt-20">
-            <button
-              className="-ml-1 mt-2 mb-12 flex items-center decoration-amber-500/50 transition-colors hover:underline dark:text-zinc-300 dark:hover:text-zinc-200"
-              onClick={() => router.back()}
-            >
-              <ChevronLeftIcon className="h-5 " />
-              Back
-            </button>
-            <div className="mx-auto grid max-w-[40rem] grid-cols-1 gap-y-16 gap-x-6 lg:max-w-none lg:grid-cols-3">
+            <div>
+              
+            </div>
+            <div className="mx-auto grid max-w-[40rem] grid-cols-1 gap-y-16 gap-x-6 xl:max-w-none xl:grid-cols-3">
               <div className="flex flex-col lg:py-12">
+                <button
+                  className="pb-14 md:pb-10 md:-mt-8 flex items-center transition-colors dark:text-zinc-300 dark:hover:text-zinc-200"
+                  onClick={() => router.back()}
+                >
+                  <ChevronLeftIcon className="h-5" />
+                  Back
+                </button>
+                <p className="text-xl font-semibold leading-7 text-amber-500">
+                  {project?.projectType}
+                </p>
                 <h1 className="mt-3 text-4xl font-extrabold leading-none tracking-tight text-zinc-200 sm:text-5xl sm:leading-[3.5rem]">
                   {project?.title}
                 </h1>
-                <p className="order-first text-xl font-semibold leading-7 text-amber-500">
-                  {project?.projectType}
-                </p>
-                <p className="mt-6  leading-7 text-zinc-300">
+                <p className="mt-6 leading-7 text-zinc-300">
                   <PortableText value={project?.description} />
                 </p>
-                <div className="mt-6 grid max-w-[18rem] grid-cols-2 gap-y-5">
+                <div className="grid grid-cols-3 w-fit gap-y-4 gap-x-6 mt-6">
                   {project?.technologies?.map((tech: any, i: number) => (
-                    <div
-                      key={i}
-                      className="flex items-center text-sm font-medium text-zinc-300"
+                    <motion.div
+                      className="flex items-center"
+                      key={tech._id}
+                      initial={{
+                        opacity: 0,
+                        translateX: -5,
+                        translateY: -5,
+                      }}
+                      animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+                      transition={{ duration: 0.3, delay: 0.05 + i * 0.1 }}
                     >
-                      <div className="relative h-[32px] w-[34px] flex-none">
-                        <SanityImage
-                          src={tech?.logo}
-                          alt={tech?.name}
-                          layout="fill"
-                        />
-                      </div>
-                      <span className="ml-1.5">{tech?.name}</span>
+                    <div className="relative h-[32px] w-[32px] flex-none">
+                      <SanityImage src={tech?.logo} alt={tech?.name} layout="fill" />
                     </div>
+                    <p className="pl-1.5 text-sm text-zinc-400">{tech.name}</p>
+                  </motion.div>
                   ))}
                 </div>
-
-                <div className="mt-10 flex gap-5">
-                  <button className="inline-flex justify-center rounded-lg bg-amber-500/90 py-3 px-4 text-zinc-100 transition-colors hover:bg-amber-500 md:px-6">
+                <div className="mt-12 flex gap-4 items-center">
+                  <button className="inline-flex justify-center rounded-md md:rounded-lg bg-amber-500/90 py-4 w-1/2 text-zinc-100 transition-colors hover:bg-amber-500 md:px-8">
                     <span className="flex items-center">
                       Live preview
                       <svg
@@ -79,7 +86,7 @@ export default function Project({ data = {}, preview }: any) {
                       </svg>
                     </span>
                   </button>
-                  <button className="inline-flex justify-center rounded-lg border border-amber-500/70 py-3 px-4 text-zinc-200 transition-colors hover:border-amber-500 hover:text-zinc-100 md:px-6">
+                  <button className="inline-flex justify-center rounded-md md:rounded-lg border border-amber-500/70 py-4 w-1/2 text-zinc-200 transition-colors hover:border-amber-500 hover:text-zinc-100 md:px-8">
                     <span className="flex items-center">
                       Source code
                       <svg
@@ -92,7 +99,7 @@ export default function Project({ data = {}, preview }: any) {
                   </button>
                 </div>
               </div>
-              <div className="relative md:mx-20 lg:col-span-2">
+              <div className="relative xl:mx-20 my-6 px-2 md:my-0 lg:col-span-2">
                 <ImageSlider images={project?.screenshots} />
 
                 <div className="z-0 hidden md:block">
@@ -115,33 +122,29 @@ export default function Project({ data = {}, preview }: any) {
               </div>
             </div>
           </div>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-px overflow-hidden">
+
+        <div className="hidden md:flex absolute inset-x-0 bottom-0 h-px overflow-hidden">
           <div className="absolute -right-8 bottom-0 -left-8 h-px bg-zinc-100/[0.1] [mask-image:linear-gradient(to_right,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
         </div>
       </div>
-      <div className="mx-auto mt-52 w-full max-w-[85rem] px-4 pb-20 sm:mt-36 sm:px-6 sm:pb-24 lg:mt-28 lg:px-8 lg:pb-32 xl:mt-36">
-        <div className="mx-auto max-w-[40rem] space-y-20 divide-y divide-zinc-800 sm:space-y-24 lg:max-w-none lg:space-y-32">
-          <section className="grid grid-cols-1 items-baseline gap-y-10 gap-x-6 lg:grid-cols-3">
-            <h2 className="text-2xl font-semibold leading-9 tracking-tight text-amber-500">
-              What`s included
-            </h2>
-            <div className="max-w-2xl lg:col-span-2">
+      <div className="mx-auto max-w-[85rem] mt-4 md:mt-20 px-6 pb-20 sm:px-6 sm:pb-24 lg:px-8 lg:pb-32">
+        <div className="flex flex-col lg:flex-row space-y-16 lg:space-y-0 lg:space-x-16">
+          <section className="mx-auto">
+            <div className='mb-5'>
+              <h2 className="text-3xl font-bold capitalize leading-snug tracking-tight">Features</h2>
+              <Underline className='-mt-2 -ml-1 flex h-4 w-fit'/>
+            </div>
+            <div className="max-w-2xl">
               <Prose content={project?.content} />
             </div>
           </section>
-          <section className="grid grid-cols-1 gap-y-10 gap-x-6 pt-10 lg:grid-cols-3">
-            <h2 className="text-2xl font-semibold leading-9 tracking-tight text-amber-500">
-              Built for developers
-            </h2>
-            <div className="max-w-2xl lg:col-span-2">
-              <div className="grid grid-cols-2 gap-x-8 gap-y-6">
-                {project?.technologies?.map((tech: any, i: number) => (
-                  <strong key={i} className="font-semibold text-zinc-300">
-                    {tech?.name}
-                  </strong>
-                ))}
-              </div>
+          <section className="mx-auto">
+            <div className='mb-5'>
+              <h2 className="text-3xl font-bold capitalize leading-snug tracking-tight">Dependencies</h2>
+              <Underline className='-mt-2 -ml-1 flex h-4 w-fit'/>
+            </div>
+            <div className="max-w-xl">
+              <Prose content={project?.content} />
             </div>
           </section>
         </div>

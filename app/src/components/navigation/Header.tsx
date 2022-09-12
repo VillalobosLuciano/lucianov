@@ -135,7 +135,7 @@ export function Header({ navigation }: { navigation: Navigation[] }) {
             <div
               className={clsx('rounded-lg bg-zinc-700/50 p-1 text-zinc-200', {
                 '': lgQuery,
-                'absolute right-14 mr-1 mt-1': !lgQuery,
+                'absolute right-14 mr-2 mt-1': !lgQuery,
               })}
             >
               <ThemeSelector />

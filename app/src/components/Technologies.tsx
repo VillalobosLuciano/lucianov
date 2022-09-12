@@ -35,8 +35,8 @@ export default function Technologies({ technologies }: any) {
           ))}
         </div>
         <div className="hidden items-center md:flex">
-          <Arrow className="h-4 w-fit" />
-          <SVGText className="h-12 w-fit" text="Current stack" />
+          <Arrow className="h-[11px] w-fit" />
+          <SVGText className="h-[44px] w-fit" text="Current stack" />
         </div>
       </div>
       <div className="hidden items-center space-x-8 md:flex">
@@ -61,8 +61,8 @@ export default function Technologies({ technologies }: any) {
           ))}
         </div>
         <div className="hidden items-center md:flex">
-          <Arrow className="h-4 w-fit" />
-          <SVGText className="h-12 w-fit" text="Learning" />
+          <Arrow className="h-[11px] w-fit" />
+          <SVGText className="h-[44px] w-fit" text="Learning" />
         </div>
       </div>
     </Container>
