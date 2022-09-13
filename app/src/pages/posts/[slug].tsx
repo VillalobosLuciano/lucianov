@@ -30,7 +30,7 @@ export default function Posts({ data = {}, preview }: any) {
         className="mt-16 flex items-center transition-colors dark:text-zinc-300 dark:hover:text-zinc-200"
         onClick={() => router.back()}
       >
-        <ChevronLeftIcon className="h-5 " />
+        <ChevronLeftIcon className="h-5" />
         Back
       </button>
       <PostHeader

@@ -33,7 +33,6 @@ const Home: NextPageWithLayout = ({
         />
       </Head>
       <main className="mb-4">
-        {/* <Intro author={author} /> */}
         <Header author={author} technologies={technologies} />
         <InView onChange={setInView}>
           {({ ref, inView }: any) => (

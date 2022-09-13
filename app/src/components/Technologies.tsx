@@ -12,9 +12,9 @@ export default function Technologies({ technologies }: any) {
   const learning = technologies.slice(3, 5)
 
   return (
-    <Container className="mb-28 mt-3 flex flex-col space-y-4 md:mb-36">
+    <Container className="mb-28 mt-2 flex flex-col space-y-4 md:mb-36">
       <div className="mt-2 flex items-center space-x-8">
-        <div className="grid grid-cols-3 gap-8 md:grid-cols-5 md:gap-x-10">
+        <div className="grid grid-cols-3 gap-7 md:grid-cols-5 md:gap-x-10">
           {user.map((tech: any, i: number) => (
             <motion.div
               className="flex items-center"

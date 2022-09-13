@@ -13,7 +13,7 @@ const SectionHeader = forwardRef<HTMLDivElement, Props>(
   ({ sectionName, SectionDescription, inView }, ref) => {
     return (
       <Container>
-        <div ref={ref} className="max-w-2xl px-2">
+        <div ref={ref} className="max-w-2xl">
           <div className="flex w-fit flex-col">
             <h2
               className={clsx(

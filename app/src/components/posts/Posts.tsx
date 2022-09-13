@@ -66,14 +66,14 @@ export default function Posts({ posts }: any) {
 
   return (
     <Container className="py-24">
-      <div className="max-w-2xl px-2 pb-4  lg:mx-0">
+      <div className="max-w-2xl pb-4">
         <h2 className="text-4xl font-semibold text-zinc-200">Posts</h2>
         <p className="mb-6 mt-4 text-lg leading-normal tracking-tight text-zinc-400">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC.
         </p>
       </div>
-      <div className="mb-6 items-center gap-x-4 px-2 md:flex">
+      <div className="mb-6 items-center gap-x-4 md:flex">
         <Search handleSearch={handleSearch} searchInput={searchInput} />
         <Listbox
           as="div"
@@ -81,43 +81,40 @@ export default function Posts({ posts }: any) {
           value={selected}
           onChange={setSelected}
         >
-          {({open}) => (
+          {({ open }) => (
             <>
-            
-          <Listbox.Label className="sr-only">Theme</Listbox.Label>
-          <Listbox.Button
-            className="relative w-full cursor-default rounded-md border border-amber-500/50 bg-zinc-800/10 py-2 pl-3 pr-10 text-left shadow-md focus:border-amber-500/50 sm:text-sm"
-          >
-            <span className="block truncate">{selected}</span>
-            <span className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-2">
-              {open ? (
-                <ChevronUpIcon
-                  className="h-6 w-6 text-amber-500/90"
-                  aria-hidden="true"
-                />
-              ) : (
-                <ChevronDownIcon
-                  className="h-6 w-6 text-amber-500/90"
-                  aria-hidden="true"
-                />
-              )}
-            </span>
-          </Listbox.Button>
-          <Listbox.Options className="mt-2 w-full rounded-lg border border-amber-500/50 bg-[#1a1a1c] text-zinc-300 md:absolute md:w-32">
-            {tags.map((tag: any) => (
-              <Listbox.Option
-                key={tag}
-                value={tag}
-                className={clsx(
-                  'cursor-pointer py-2 pl-3 pr-10 text-left text-sm transition-colors hover:bg-amber-500/5 hover:text-zinc-100',
-                  tag === selected &&
-                    'bg-amber-500/20 text-amber-500 hover:bg-amber-500/20 hover:text-amber-500'
-                )}
-              >
-                {tag}
-              </Listbox.Option>
-            ))}
-          </Listbox.Options>
+              <Listbox.Label className="sr-only">Theme</Listbox.Label>
+              <Listbox.Button className="relative w-full cursor-default rounded-md border border-amber-500/50 bg-zinc-800/10 py-2 pl-3 pr-10 text-left shadow-md focus:border-amber-500/50 sm:text-sm">
+                <span className="block truncate">{selected}</span>
+                <span className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-2">
+                  {open ? (
+                    <ChevronUpIcon
+                      className="h-6 w-6 text-amber-500/90"
+                      aria-hidden="true"
+                    />
+                  ) : (
+                    <ChevronDownIcon
+                      className="h-6 w-6 text-amber-500/90"
+                      aria-hidden="true"
+                    />
+                  )}
+                </span>
+              </Listbox.Button>
+              <Listbox.Options className="mt-2 w-full rounded-lg border border-amber-500/50 bg-[#1a1a1c] text-zinc-300 md:absolute md:w-32">
+                {tags.map((tag: any) => (
+                  <Listbox.Option
+                    key={tag}
+                    value={tag}
+                    className={clsx(
+                      'cursor-pointer py-2 pl-3 pr-10 text-left text-sm transition-colors hover:bg-amber-500/5 hover:text-zinc-100',
+                      tag === selected &&
+                        'bg-amber-500/20 text-amber-500 hover:bg-amber-500/20 hover:text-amber-500'
+                    )}
+                  >
+                    {tag}
+                  </Listbox.Option>
+                ))}
+              </Listbox.Options>
             </>
           )}
         </Listbox>
@@ -145,7 +142,7 @@ export default function Posts({ posts }: any) {
             </motion.div>
           ))
         ) : (
-          <div className="px-2 text-zinc-400">No posts yet</div>
+          <div className="text-zinc-400">No posts yet</div>
         )}
       </div>
     </Container>

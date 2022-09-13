@@ -24,7 +24,7 @@ export default function PostPreview({
   }
 
   return (
-    <div className="px-2 pt-8 md:pr-20 xl:grid xl:grid-cols-4 xl:items-baseline">
+    <div className="pt-8 md:pr-20 xl:grid xl:grid-cols-4 xl:items-baseline">
       <time className="text-sm text-zinc-400 dark:text-zinc-300/80 md:text-base">
         {format(parseISO(date), 'MMMM dd, yyyy')}
       </time>

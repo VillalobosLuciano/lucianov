@@ -83,5 +83,10 @@ export default {
       type: "array",
       of: [{ type: "reference", to: { type: "technology" } }],
     },
+    {
+      name: "dependencies",
+      title: "Dependencies",
+      type: "code",
+    },
   ],
 };

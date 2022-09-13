@@ -45,7 +45,8 @@ const projectFields = groq`
       ..., 
       "lqip": asset->metadata.lqip
     },
-  }
+  },
+  dependencies
 `
 
 export const indexQuery = groq`

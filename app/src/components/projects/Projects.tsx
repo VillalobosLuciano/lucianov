@@ -26,14 +26,14 @@ export default function Projects({ projects }: any) {
 
   return (
     <Container className="py-24">
-      <div className="max-w-2xl px-2 pb-4 lg:mx-0">
+      <div className="max-w-2xl pb-4 lg:mx-0">
         <h2 className="text-4xl font-semibold text-zinc-200">Projects</h2>
         <p className="mt-4 mb-6 text-lg leading-normal tracking-tight text-zinc-400">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC.
         </p>
       </div>
-      <div className="mb-6 flex flex-wrap gap-4 px-2">
+      <div className="mb-6 flex flex-wrap gap-4">
         {projectTypes.map((type: any, index: number) => (
           <button
             key={type}
@@ -73,7 +73,6 @@ export default function Projects({ projects }: any) {
         {projectsList.length ? (
           projectsList.map((project: any, i: number) => (
             <motion.div
-              className="px-4 md:px-0"
               key={project._id}
               initial={{
                 opacity: 0,

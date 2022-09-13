@@ -80,11 +80,11 @@ export default function SintaxHighlight({ code, codeLanguage }: Props) {
 
       <div className="relative rounded-2xl bg-zinc-600/10 ring-1 ring-white/10 backdrop-blur">
         <div className="absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-amber-300/0 via-amber-500/50 to-amber-300/0" />
-        <div className="pt-2 lg:pt-4 lg:pl-4">
-          <div className="mt-2 flex items-start px-1 text-sm">
+        <div className="pt-2 lg:pt-3 lg:pl-3">
+          <div className="mt-2 flex items-start text-sm">
             <div
               aria-hidden="true"
-              className="hidden select-none border-r border-zinc-300/5 pr-4 text-end font-mono text-zinc-600 lg:flex"
+              className="hidden select-none border-r border-zinc-300/5 pr-3 text-end font-mono text-zinc-600 lg:flex"
             >
               {Array.from({
                 length: code.split('\n').length,
@@ -103,7 +103,7 @@ export default function SintaxHighlight({ code, codeLanguage }: Props) {
             >
               {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <pre
-                  className={clsx(className, 'flex overflow-x-auto pb-6')}
+                  className={clsx(className, 'flex overflow-x-auto pb-4')}
                   style={style}
                 >
                   <code className="px-4">

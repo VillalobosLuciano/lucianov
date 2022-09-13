@@ -24,7 +24,7 @@ const navigation = [
 
 const HomeLayout = ({ children }: Props) => {
   return (
-    <Container className="flex min-h-screen max-w-5xl flex-col">
+    <Container className="flex min-h-screen max-w-7xl flex-col">
       <Header navigation={navigation} />
       <main className="mb-auto px-5 md:px-0">{children}</main>
       <Footer />

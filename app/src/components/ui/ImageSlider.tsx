@@ -5,7 +5,7 @@ import SanityImage from '../SanityImage'
 import clsx from 'clsx'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
 import { motion } from 'framer-motion'
-import Underline from '@/components/icons/Underline';
+import Underline from '@/components/icons/Underline'
 
 export default function ImageSlider({ images }: any) {
   const [currentSlide, setCurrentSlide] = React.useState(0)
@@ -38,10 +38,12 @@ export default function ImageSlider({ images }: any) {
 
   return (
     <>
-      <div className="relative mb-8">
-        <div className='md:hidden mb-5'>
-          <p className="text-3xl font-bold capitalize leading-snug tracking-tight transition-colors duration-1000 md:text-4xl">Screenshots</p>
-          <Underline className='-mt-2 -ml-1 flex h-4 w-fit'/>
+      <div className="relative mb-8 md:mb-6">
+        <div className="mb-5 md:hidden">
+          <p className="text-3xl font-bold capitalize leading-snug tracking-tight transition-colors duration-1000 md:text-4xl">
+            Screenshots
+          </p>
+          <Underline className="-mt-2 -ml-1 flex h-4 w-fit" />
         </div>
         <div ref={sliderRef} className="keen-slider">
           {images.map((image: any, i: number) => (

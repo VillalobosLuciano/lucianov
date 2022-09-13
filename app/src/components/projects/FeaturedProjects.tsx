@@ -7,7 +7,7 @@ import { ChevronRightIcon } from '@heroicons/react/solid'
 export default function FeaturedProjects({ projects }: any) {
   const featuredProjects = projects.slice(0, 3)
   return (
-    <Container className="mb-28 mt-4 md:mt-6 md:mb-40">
+    <Container className="mb-28 mt-2 md:mt-6 md:mb-40">
       <ProjectsSlider projects={featuredProjects} />
       {projects.length ? (
         <div className="mx-auto hidden max-w-2xl grid-cols-1 gap-x-9 gap-y-6 text-sm sm:grid-cols-2 md:grid lg:max-w-none lg:grid-cols-3">
