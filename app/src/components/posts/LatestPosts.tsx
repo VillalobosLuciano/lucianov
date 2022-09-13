@@ -23,7 +23,7 @@ export default function LatestPosts({ posts }: any) {
         <Link href="/posts">
           <a className="mx-auto flex items-center rounded-lg border border-amber-500/40 px-4 py-2 text-center text-teal-600/90 dark:text-zinc-200/90 md:hidden">
             View all posts
-            <ChevronRightIcon className="ml-2 -mr-2 mt-[2px] h-6 w-6 dark:text-amber-500/90" />
+            <ChevronRightIcon className="ml-2 -mr-2 mt-[2px] h-6 w-6 dark:text-amber-500/80" />
           </a>
         </Link>
       </div>

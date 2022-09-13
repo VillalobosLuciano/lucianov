@@ -4,5 +4,5 @@ interface Props {
 }
 
 export default function SectionSeparator({ mt, mb }: Props) {
-  return <hr className={`mt-${mt} mb-${mb} border-zinc-400/10`} />
+  return <hr className={`mt-${mt} mb-${mb} border-white/10`} />
 }

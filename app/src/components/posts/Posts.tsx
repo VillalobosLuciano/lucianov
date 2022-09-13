@@ -84,23 +84,23 @@ export default function Posts({ posts }: any) {
           {({ open }) => (
             <>
               <Listbox.Label className="sr-only">Theme</Listbox.Label>
-              <Listbox.Button className="relative w-full cursor-default rounded-md border border-amber-500/50 bg-zinc-800/10 py-2 pl-3 pr-10 text-left shadow-md focus:border-amber-500/50 sm:text-sm">
+              <Listbox.Button className="relative w-full cursor-default rounded-md border border-amber-500/50 py-2 pl-3 pr-10 text-left shadow-md focus:border-amber-500/50 sm:text-sm">
                 <span className="block truncate">{selected}</span>
                 <span className="absolute inset-y-0 right-0 flex cursor-pointer items-center pr-2">
                   {open ? (
                     <ChevronUpIcon
-                      className="h-6 w-6 text-amber-500/90"
+                      className="h-6 w-6 text-amber-500/80"
                       aria-hidden="true"
                     />
                   ) : (
                     <ChevronDownIcon
-                      className="h-6 w-6 text-amber-500/90"
+                      className="h-6 w-6 text-amber-500/80"
                       aria-hidden="true"
                     />
                   )}
                 </span>
               </Listbox.Button>
-              <Listbox.Options className="mt-2 w-full rounded-lg border border-amber-500/50 bg-[#1a1a1c] text-zinc-300 md:absolute md:w-32">
+              <Listbox.Options className="mt-2 w-full rounded-lg border border-amber-500/50 bg-zinc-900 text-zinc-300 md:absolute md:w-32">
                 {tags.map((tag: any) => (
                   <Listbox.Option
                     key={tag}

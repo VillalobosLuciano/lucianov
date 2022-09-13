@@ -28,11 +28,10 @@ export default function PostPreview({
       <time className="text-sm text-zinc-400 dark:text-zinc-300/80 md:text-base">
         {format(parseISO(date), 'MMMM dd, yyyy')}
       </time>
-
       <div className="xl:col-span-3">
         <h3 className="mt-1 text-2xl font-medium leading-8 tracking-tight">
           <Link href={`/posts/${slug}`}>
-            <a className="capitalize text-teal-600/90 transition-colors duration-300 hover:text-teal-600 dark:text-zinc-100/90 dark:hover:text-amber-500/90">
+            <a className="capitalize text-teal-600/90 decoration-amber-500/50 underline-offset-2 transition-colors duration-300 hover:text-teal-600 hover:underline dark:text-zinc-200 dark:hover:text-zinc-50">
               {title}
             </a>
           </Link>
@@ -42,7 +41,7 @@ export default function PostPreview({
             <p
               onClick={handleTagChange}
               key={tag._id}
-              className="mt-3 mr-3 cursor-pointer rounded border border-amber-500/50 px-2 py-1 text-xs font-medium text-zinc-500 transition first-letter:uppercase hover:text-zinc-500 dark:text-amber-500/90 dark:hover:border-amber-500/60 dark:hover:text-amber-500 md:py-0 md:text-sm"
+              className="mt-3 mr-3 cursor-pointer rounded-md border border-amber-500/50 px-2 py-1 text-xs font-medium text-zinc-500 transition first-letter:uppercase hover:text-zinc-500 dark:text-zinc-300 dark:hover:border-amber-500/60 dark:hover:text-zinc-200 md:py-0 md:text-sm"
             >
               {tag.title}
             </p>

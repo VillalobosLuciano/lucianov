@@ -46,7 +46,7 @@ function MobileNavLink({ children, href, ...props }: any) {
       className={clsx(
         'block w-full py-2 text-start text-sm font-semibold capitalize tracking-wide',
         {
-          'text-teal-600/90 dark:text-amber-500/90': isActive,
+          'text-teal-600/90 dark:text-amber-500/80': isActive,
           'text-zinc-500/90 dark:text-zinc-300': !isActive,
         }
       )}

@@ -33,16 +33,16 @@ export default function Projects({ projects }: any) {
           has roots in a piece of classical Latin literature from 45 BC.
         </p>
       </div>
-      <div className="mb-6 flex flex-wrap gap-4">
+      <div className="mb-6 flex flex-wrap gap-3">
         {projectTypes.map((type: any, index: number) => (
           <button
             key={type}
             className={clsx(
-              'relative cursor-pointer rounded-lg border-transparent px-3 py-1.5 text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
+              'relative cursor-pointer rounded-md border-transparent px-3 py-1.5 text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
               {
                 'border border-teal-600/30 bg-zinc-800/30 text-teal-600 dark:border-amber-500/50 dark:text-zinc-100':
                   type === selected,
-                'border border-zinc-400/30 text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300/90 dark:hover:text-zinc-200':
+                'border border-white/10 text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300/90 dark:hover:text-zinc-200':
                   type !== selected,
               }
             )}
