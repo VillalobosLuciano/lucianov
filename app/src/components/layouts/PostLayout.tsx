@@ -22,14 +22,18 @@ const navigation = [
   },
 ]
 
-const ProjectLayout = ({ children }: Props) => {
+const PostLayout = ({ children }: Props) => {
   return (
-    <Container className="flex min-h-screen max-w-7xl flex-col">
-      <Header navigation={navigation} />
-      <main className="mb-auto px-5 md:px-0">{children}</main>
-      <Footer />
-    </Container>
+    <div className="flex min-h-screen flex-col">
+      <div className="mx-auto w-full max-w-7xl md:px-4">
+        <Header navigation={navigation} />
+      </div>
+      <main className="mb-auto">{children}</main>
+      <div className="mx-auto w-full max-w-7xl md:px-4">
+        <Footer />
+      </div>
+    </div>
   )
 }
 
-export default ProjectLayout
+export default PostLayout

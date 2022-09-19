@@ -27,8 +27,16 @@ const components = {
     },
     code: ({ value }: any) => {
       return (
-        <div className="not-prose">
-          <SintaxHighlight code={value.code} codeLanguage={value.language} />
+        <div className="not-prose flex items-center">
+          <div className="relative min-w-full">
+            <SintaxHighlight code={value.code} codeLanguage={value.language} />
+          </div>
+          <div className="hidden min-w-[200px] max-w-xl items-center lg:ml-36 lg:flex lg:gap-x-4">
+            <div className="border-t-[5px] border-r-[10px] border-b-[5px] border-t-transparent border-r-amber-500/60 border-b-transparent"></div>
+            <p className="text-sm text-zinc-400/90">
+              caption or comments or anything in between
+            </p>
+          </div>
         </div>
       )
     },
@@ -45,15 +53,15 @@ export function Prose({ content, className, ...props }: Props) {
     <div
       className={clsx(
         className,
-        'prose prose-slate max-w-none dark:prose-invert dark:text-zinc-400',
+        'prose prose-slate max-w-none dark:prose-invert dark:text-zinc-300',
         // headings
         'prose-headings:font-normal',
         // lead
         'prose-lead:text-zinc-500 dark:prose-lead:text-zinc-400',
         // links
-        'prose-a:font-semibold dark:prose-a:text-amber-500',
+        'prose-a:font-semibold dark:prose-a:text-amber-500/90',
         // link underline
-        'prose-a:no-underline prose-a:shadow-[inset_0_-2px_0_0_var(--tw-prose-background,#fff),inset_0_calc(-1*(var(--tw-prose-underline-size,4px)+2px))_0_0_var(--tw-prose-underline,theme(colors.amber.700))] hover:prose-a:[--tw-prose-underline-size:3px] dark:[--tw-prose-background:theme(colors.zinc.900)] dark:prose-a:shadow-[inset_0_calc(-1*var(--tw-prose-underline-size,2px))_0_0_var(--tw-prose-underline,theme(colors.amber.700))] dark:hover:prose-a:[--tw-prose-underline-size:3px]',
+        'prose-a:no-underline dark:hover:prose-a:underline',
         // pre
         'prose-pre:w-full prose-pre:rounded-xl prose-pre:bg-zinc-900 prose-pre:shadow-lg dark:prose-pre:bg-zinc-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-zinc-300/10',
         // hr
