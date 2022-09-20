@@ -28,7 +28,7 @@ export default function PostPreview({
       <time className="text-sm text-zinc-400 dark:text-zinc-300/80 md:text-base">
         {format(parseISO(date), 'MMMM dd, yyyy')}
       </time>
-      <div className="xl:col-span-3">
+      <div className="xl:col-span-4">
         <h3 className="mt-1 text-2xl font-medium leading-8 tracking-tight">
           <Link href={`/posts/${slug}`}>
             <a className="capitalize text-teal-600/90 decoration-amber-500/50 underline-offset-2 transition-colors duration-300 hover:text-teal-600 hover:underline dark:text-zinc-200 dark:hover:text-zinc-50">
@@ -47,7 +47,7 @@ export default function PostPreview({
             </p>
           ))}
         </div>
-        <div className="mt-4 max-w-2xl text-zinc-400 line-clamp-4">
+        <div className="mt-4 max-w-2xl text-zinc-400 line-clamp-2">
           {excerpt}
         </div>
       </div>

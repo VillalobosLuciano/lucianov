@@ -29,7 +29,7 @@ export default {
       of: [
         { type: "block" },
         { type: "image", options: { hotspot: true } },
-        { type: "code" },
+        { type: "code", options: { withFilename: true } },
       ],
     },
     {

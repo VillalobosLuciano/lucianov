@@ -1,5 +1,5 @@
 pre[class*='language-'] {
-  color: theme('colors.zinc.50');
+  color: theme('colors.zinc.100');
 }
 
 .token.tag,
@@ -8,7 +8,7 @@ pre[class*='language-'] {
 .token.selector .class,
 .token.selector.class,
 .token.function {
-  color: theme('colors.amber.400');
+  color: theme('colors.amber.200');
 }
 
 .token.attr-name,
@@ -16,7 +16,7 @@ pre[class*='language-'] {
 .token.rule,
 .token.pseudo-class,
 .token.important {
-  color: theme('colors.zinc.300');
+  color: theme('colors.amber.500');
 }
 
 .token.module {
@@ -27,21 +27,27 @@ pre[class*='language-'] {
 .token.class,
 .token.string,
 .token.property {
-  color: theme('colors.zinc.300');
+  color: theme('colors.amber.100');
 }
 
 .token.punctuation,
 .token.attr-equals {
-  color: theme('colors.zinc.500');
+  color: theme('colors.zinc.100');
 }
 
 .token.unit,
 .language-css .token.function {
-  color: theme('colors.amber.200');
+  color: theme('colors.amber.300');
 }
 
-.token.comment,
-.token.operator,
 .token.combinator {
+  color: theme('colors.zinc.100');
+}
+
+.token.comment {
+  color: theme('colors.zinc.500');
+}
+
+.token.operator {
   color: theme('colors.zinc.200');
 }
