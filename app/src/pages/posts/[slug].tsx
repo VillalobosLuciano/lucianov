@@ -43,7 +43,7 @@ const PostPage: NextPageWithLayout = ({ data = {}, preview }: any) => {
         </div>
         <div className="hidden h-auto w-px flex-col bg-white/10 md:ml-12 lg:flex xl:ml-14"></div>
         <div className="-mt-4 mb-4 ml-4 flex flex-col gap-y-4 border-b border-white/10 pb-6 md:border-none md:pt-8 lg:ml-10 lg:mt-0">
-          <p className="text-sm text-zinc-400/90">Posted by</p>
+          <p className="text-sm text-zinc-500">Posted by</p>
           <div className="block flex-shrink-0">
             <div className="flex items-center">
               <div className="relative inline-block h-9 w-9">
@@ -58,7 +58,7 @@ const PostPage: NextPageWithLayout = ({ data = {}, preview }: any) => {
                 <p className="text-sm font-medium text-zinc-200">
                   Luciano Villalobos
                 </p>
-                <p className="text-xs font-medium text-zinc-400/90 hover:text-zinc-400">
+                <p className="text-xs font-medium text-zinc-500 hover:text-zinc-400">
                   @lucianov0
                 </p>
               </div>

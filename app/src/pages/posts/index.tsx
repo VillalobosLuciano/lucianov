@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Posts from '@/components/posts/Posts'
 import type { NextPageWithLayout } from '././../_app'
 import type { ReactElement } from 'react'
-import HomeLayout from '@/components/layouts/HomeLayout'
+import PostLayout from '@/components/layouts/PostLayout'
 
 const PostsPage: NextPageWithLayout = ({ posts }: any) => {
   return (
@@ -18,7 +18,7 @@ const PostsPage: NextPageWithLayout = ({ posts }: any) => {
   )
 }
 PostsPage.getLayout = (page: ReactElement) => {
-  return <HomeLayout>{page}</HomeLayout>
+  return <PostLayout>{page}</PostLayout>
 }
 
 export async function getStaticProps({ preview = false }) {

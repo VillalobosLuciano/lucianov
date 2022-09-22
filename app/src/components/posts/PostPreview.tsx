@@ -10,46 +10,47 @@ export default function PostPreview({
   slug,
   categories,
 }: any) {
-  const [_, setTag] = useState('')
+  const [_, setCategory] = useState('')
   const router = useRouter()
 
   const handleTagChange = (e: any) => {
     e.preventDefault()
-    const tagName = e.target.innerText.toLowerCase()
-    setTag(tagName)
+    const categoryName: string = e.target.innerText
+    setCategory(categoryName)
     router.push({
       pathname: '/posts',
-      query: { tag: tagName },
+      query: { title: categoryName },
     })
   }
 
   return (
-    <div className="pt-8 md:pr-20 xl:grid xl:grid-cols-4 xl:items-baseline">
-      <time className="text-sm text-zinc-400 dark:text-zinc-300/80 md:text-base">
-        {format(parseISO(date), 'MMMM dd, yyyy')}
-      </time>
-      <div className="xl:col-span-4">
-        <h3 className="mt-1 text-2xl font-medium leading-8 tracking-tight">
-          <Link href={`/posts/${slug}`}>
-            <a className="capitalize text-teal-600/90 decoration-amber-500/50 underline-offset-2 transition-colors duration-300 hover:text-teal-600 hover:underline dark:text-zinc-200 dark:hover:text-zinc-50">
-              {title}
-            </a>
-          </Link>
-        </h3>
-        <div className="flex flex-wrap">
+    <div className="w-full rounded-xl border border-white/10 p-4 lg:p-8">
+      <div className="mb-2 flex flex-row items-center gap-x-4 md:mb-1 md:justify-between md:gap-0">
+        <time className="text-sm text-zinc-500 md:text-base">
+          {format(parseISO(date), 'MMMM dd, yyyy')}
+        </time>
+        <div className="order-first w-fit md:order-none">
           {categories?.map((tag: any) => (
             <p
               onClick={handleTagChange}
               key={tag._id}
-              className="mt-3 mr-3 cursor-pointer rounded-md border border-amber-500/50 px-2 py-1 text-xs font-medium text-zinc-500 transition first-letter:uppercase hover:text-zinc-500 dark:text-zinc-300 dark:hover:border-amber-500/60 dark:hover:text-zinc-200 md:py-0 md:text-sm"
+              className="cursor-pointer rounded-md border border-amber-500/30 px-2 py-1 text-xs font-medium text-zinc-500 transition first-letter:uppercase hover:text-zinc-500 dark:text-zinc-400 dark:hover:border-amber-500/60 dark:hover:text-zinc-200 md:py-0 md:text-sm"
             >
               {tag.title}
             </p>
           ))}
         </div>
-        <div className="mt-4 max-w-2xl text-zinc-400 line-clamp-2">
-          {excerpt}
-        </div>
+      </div>
+      <div className="max-w-2xl">
+        <h3 className="text-2xl font-semibold md:text-3xl">
+          <Link href={`/posts/${slug}`}>
+            <a className="capitalize text-teal-600/90 transition-colors duration-300 hover:text-teal-600 dark:text-zinc-300 dark:hover:text-zinc-50">
+              {title}
+            </a>
+          </Link>
+        </h3>
+
+        <div className="mt-4 text-zinc-400 line-clamp-2">{excerpt}</div>
       </div>
     </div>
   )

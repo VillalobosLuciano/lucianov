@@ -10,19 +10,47 @@ import { useRouter } from 'next/router'
 import SectionSeparator from '../ui/SectionSeparator'
 import { motion } from 'framer-motion'
 
+interface Category {
+  title: string
+  description: string
+}
+
 export default function Posts({ posts }: any) {
+  const allPosts: Category = {
+    description: 'hagale pues',
+    title: 'All Posts',
+  }
   const [searchInput, setSearchInput] = useState('')
   const [postsList, setPostsList] = useState(posts)
-  const [selected, setSelected] = useState('All')
-  // const [open, setOpen] = useState(false)
+  const [selected, setSelected] = useState(allPosts)
 
   const router = useRouter()
 
-  const tagsTitle = posts.map((post: any) =>
-    post.categories.map((tag: any) => tag.title)
+  const categoriesFromSanity = posts.map((post: any) =>
+    post.categories.map((cat: Category) => ({
+      description: cat.description,
+      title: cat.title,
+    }))
   )
-  const tags = Array.from(new Set(tagsTitle.flat()))
-  tags.unshift('All')
+
+  const categories = Array.from(new Set(categoriesFromSanity.flat()))
+  categories.unshift(allPosts)
+
+  const filteredCategories = categories.filter((value, index) => {
+    const _value = JSON.stringify(value)
+    return (
+      index ===
+      categories.findIndex((obj) => {
+        return JSON.stringify(obj) === _value
+      })
+    )
+  })
+
+  // const tagsTitle = posts.map((post: any) =>
+  //   post.categories.map((tag: any) => tag.title)
+  // )
+  // const tags = Array.from(new Set(tagsTitle.flat()))
+  // tags.unshift('All Posts')
 
   const handleSearch = (e: any) => {
     setSearchInput(e.target.value)
@@ -40,44 +68,67 @@ export default function Posts({ posts }: any) {
     }
   }
 
-  const normalizeQueryTags = (str: string) => {
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+  const handleSelected = (cat: any) => {
+    router.push('/posts')
+    setSelected(cat)
   }
 
-  useEffect(() => {
-    if (router.query.tag) {
-      setSelected(normalizeQueryTags(router.query.tag as string))
-    } else {
-      setSelected('All')
-    }
-  }, [router.query.tag])
+  // const normalizeQueryTags = (str: string) => {
+  //   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+  // }
 
   useEffect(() => {
-    if (selected === 'All') {
+    if (router.query.title) {
+      const matchCategory = filteredCategories.filter((obj: any) => {
+        return obj.title === router.query.title
+      })
+      matchCategory.map((cat: any) =>
+        setSelected({
+          title: cat.title,
+          description: cat.description,
+        })
+      )
+    }
+  }, [router.query.title])
+
+  useEffect(() => {
+    if (selected.title === allPosts.title) {
       setPostsList(posts)
     } else {
       setPostsList(
         posts.filter((post: any) =>
-          post.categories.map((tag: any) => tag.title).includes(selected)
+          post.categories.map((cat: any) => cat.title).includes(selected.title)
         )
       )
     }
-  }, [selected, posts])
+  }, [selected, posts, allPosts.title])
 
   return (
-    <Container className="py-24">
-      <div className="max-w-2xl pb-4">
-        <h2 className="text-4xl font-semibold text-zinc-200">Posts</h2>
-        <p className="mb-6 mt-4 text-lg leading-normal tracking-tight text-zinc-400">
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin literature from 45 BC.
-        </p>
-      </div>
-      <div className="mb-6 items-center gap-x-4 md:flex">
+    <div className="mx-auto my-12 flex max-w-7xl flex-col px-4 lg:flex-row">
+      <div className="mb-6 flex w-full flex-col self-start lg:sticky lg:top-12 lg:max-w-[300px]">
         <Search handleSearch={handleSearch} searchInput={searchInput} />
-        <Listbox
+        <div className="mt-6 flex w-full cursor-pointer flex-col gap-y-2">
+          {filteredCategories &&
+            filteredCategories.map((cat: any, i: number) => (
+              <div
+                onClick={() => handleSelected(cat)}
+                className={clsx(
+                  'cursor-pointer rounded-md border border-transparent px-4 py-3 text-zinc-500 transition-colors duration-300 hover:text-zinc-300',
+                  {
+                    'border border-white/5 bg-zinc-800/40 dark:text-zinc-300':
+                      cat.title === selected.title,
+                    'hover:bg-zinc-700/5': cat.title !== selected.title,
+                  }
+                )}
+                key={i}
+              >
+                {cat.title}
+              </div>
+            ))}
+        </div>
+        {/* <Listbox
           as="div"
-          className="mt-4 w-full md:mt-0 md:w-32"
+          className="mt-4 w-full md:mt-0 md:hidden md:w-32"
           value={selected}
           onChange={setSelected}
         >
@@ -117,10 +168,18 @@ export default function Posts({ posts }: any) {
               </Listbox.Options>
             </>
           )}
-        </Listbox>
+        </Listbox> */}
       </div>
-      <SectionSeparator mt={0} mb={4} />
-      <div className="grid grid-cols-1 space-y-10 divide-y divide-teal-600/10 dark:divide-zinc-400/10">
+      <div className="ml-8 hidden h-auto w-px flex-col bg-white/10 lg:flex"></div>
+      <div className="flex w-full flex-col gap-y-6 lg:ml-12">
+        <div className="mt-4 flex flex-col">
+          <h2 className="text-4xl font-semibold text-zinc-200">
+            {selected.title}
+          </h2>
+          <SectionSeparator mt={2} mb={4} />
+          <p className="pb-4 text-zinc-500">{selected.description}</p>
+        </div>
+
         {postsList.length ? (
           postsList.map((post: any, i: number) => (
             <motion.div
@@ -145,6 +204,6 @@ export default function Posts({ posts }: any) {
           <div className="text-zinc-400">No posts yet</div>
         )}
       </div>
-    </Container>
+    </div>
   )
 }

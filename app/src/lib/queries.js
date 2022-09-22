@@ -17,7 +17,11 @@ const postFields = groq`
       "lqip": asset->metadata.lqip
     },
   },
-  "categories": categories[]->{_id, title}
+  "categories": categories[]->{
+    _id, 
+    title, 
+    description
+  }
 `
 
 const projectFields = groq`
