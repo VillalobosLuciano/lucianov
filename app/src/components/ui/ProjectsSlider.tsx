@@ -51,7 +51,7 @@ export default function ImageSlider({ projects }: any) {
                   instanceRef.current?.moveToIdx(idx)
                 }}
                 className={clsx(
-                  'cursor pointer z-1 h-[2px] w-10 rounded bg-zinc-500/60',
+                  'cursor pointer z-1 h-[2px] w-10 rounded bg-zinc-400/80',
                   {
                     'bg-amber-500/80': active,
                   }

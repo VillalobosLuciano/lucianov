@@ -20,7 +20,7 @@ const SectionHeader = forwardRef<HTMLDivElement, Props>(
                 'text-3xl font-bold capitalize leading-snug tracking-tight transition-colors duration-1000 md:text-4xl',
                 {
                   'text-zinc-300': inView,
-                  'text-zinc-500': !inView,
+                  'text-zinc-400/80': !inView,
                 }
               )}
             >

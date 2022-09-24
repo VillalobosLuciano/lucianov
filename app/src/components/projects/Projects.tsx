@@ -42,7 +42,7 @@ export default function Projects({ projects }: any) {
               {
                 'border border-teal-600/30 bg-zinc-800/30 text-teal-600 dark:border-amber-500/50 dark:text-zinc-100':
                   type === selected,
-                'border border-white/10 text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300/90 dark:hover:text-zinc-200':
+                'border border-white/10 text-zinc-400 transition-colors duration-200 hover:text-zinc-400/80 dark:text-zinc-300/90 dark:hover:text-zinc-200':
                   type !== selected,
               }
             )}

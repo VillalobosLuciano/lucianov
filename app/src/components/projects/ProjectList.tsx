@@ -69,7 +69,7 @@ export default function ProjectList({ projects }: any) {
             key={projectIndex}
             className={clsx(
               'relative h-0.5 w-4 rounded-full',
-              projectIndex === activeIndex ? 'bg-zinc-300' : 'bg-zinc-500'
+              projectIndex === activeIndex ? 'bg-zinc-300' : 'bg-zinc-400/80'
             )}
             aria-label={`Go to slide ${projectIndex + 1}`}
             onClick={() => {

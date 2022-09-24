@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
-import Underline from '@/components/icons/Underline';
+import Underline from '@/components/icons/Underline'
 
 type Navigation = {
   label: string
@@ -22,11 +22,10 @@ export function NavLinks({ navigation }: { navigation: Navigation[] }) {
             onClick={() => router.push(item.pathname)}
             key={item.pathname}
             className={clsx(
-              'relative cursor-pointer font-display border-transparent px-4 py-1.5 text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
+              'relative cursor-pointer border-transparent px-4 py-1.5 font-display text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
               {
-                'text-teal-600 dark:text-zinc-100':
-                  isActive,
-                'text-zinc-400 transition-colors duration-200 hover:text-zinc-500 dark:text-zinc-300/90':
+                'text-teal-600 dark:text-zinc-100': isActive,
+                'text-zinc-400 transition-colors duration-200 hover:text-zinc-400/80 dark:text-zinc-300/90':
                   !isActive,
               }
             )}
@@ -47,18 +46,17 @@ export function NavLinks({ navigation }: { navigation: Navigation[] }) {
                 />
               )}
             </AnimatePresence>
-            <div className='relative w-full flex flex-col items-center z-10 capitalize'>
-
-            <span>{item.label}</span>
-             <Underline
-              className={clsx(
-                '-mt-1.5 h-4 w-full transition-opacity duration-500',
-                {
-                  'opacity-100': isActive,
-                  'opacity-0': !isActive,
-                }
-              )}
-            />
+            <div className="relative z-10 flex w-full flex-col items-center capitalize">
+              <span>{item.label}</span>
+              <Underline
+                className={clsx(
+                  '-mt-1.5 h-4 w-full transition-opacity duration-500',
+                  {
+                    'opacity-100': isActive,
+                    'opacity-0': !isActive,
+                  }
+                )}
+              />
             </div>
           </div>
         )

@@ -34,7 +34,7 @@ const components = {
           {value.filename && (
             <div className="hidden min-w-[200px] max-w-xl items-center lg:ml-[120px] lg:flex lg:gap-x-4">
               <div className="border-t-[5px] border-r-[10px] border-b-[5px] border-t-transparent border-r-amber-500/60 border-b-transparent"></div>
-              <p className="text-sm text-zinc-500">{value.filename}</p>
+              <p className="text-sm text-zinc-400/80">{value.filename}</p>
             </div>
           )}
         </div>
@@ -57,7 +57,7 @@ export function Prose({ content, className, ...props }: Props) {
         // headings
         'prose-headings:scroll-mt-28 prose-headings:font-sans prose-headings:font-semibold lg:prose-headings:scroll-mt-[8.5rem]',
         // lead
-        'prose-lead:text-zinc-500 dark:prose-lead:text-zinc-400',
+        'prose-lead:text-zinc-400/80 dark:prose-lead:text-zinc-400',
         // links
         'dark:prose-a:text-amber-500',
         // link underline

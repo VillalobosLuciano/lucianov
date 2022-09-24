@@ -54,7 +54,7 @@ export default function Intro({ author }: any) {
           <div className="relative border border-teal-600/20 dark:border-amber-500/20 lg:col-span-10 lg:col-start-1 lg:row-start-1 lg:grid lg:grid-cols-12 lg:items-center lg:rounded-3xl">
             <div className="relative mx-auto mr-6 max-w-md space-y-5 pl-16 sm:max-w-3xl lg:col-span-10 lg:col-start-1 lg:max-w-none">
               <motion.h2
-                className="text-3xl font-extrabold text-zinc-500/90 dark:text-zinc-300"
+                className="text-3xl font-extrabold text-zinc-400/80 dark:text-zinc-300"
                 variants={item}
               >
                 <PortableText value={author.introduction} />
@@ -77,7 +77,7 @@ export default function Intro({ author }: any) {
             layout="fill"
           />
         </div>
-        <h3 className="text-3xl font-extrabold leading-tight tracking-tight text-zinc-500/90 dark:text-zinc-100">
+        <h3 className="text-3xl font-extrabold leading-tight tracking-tight text-zinc-400/80 dark:text-zinc-100">
           {author.name}
         </h3>
 

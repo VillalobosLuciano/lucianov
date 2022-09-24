@@ -31,7 +31,7 @@ export default function PostHeader({
       <div className="flex border-b border-white/10 md:border-none">
         <div className="mx-auto flex w-full max-w-7xl items-center px-6">
           <button
-            className="my-4 w-fit text-sm transition-colors dark:text-zinc-500 dark:hover:text-zinc-50 md:mt-5"
+            className="my-4 w-fit text-sm transition-colors dark:text-zinc-400/80 dark:hover:text-zinc-50 md:mt-5"
             onClick={() => router.back()}
           >
             ← Back to Blog
@@ -42,7 +42,7 @@ export default function PostHeader({
         <div className="mx-auto flex w-full max-w-7xl flex-col px-6">
           <div className="mt-4 mb-5 flex h-28 w-fit flex-col justify-between gap-x-4 md:mt-12 md:h-auto md:flex-row-reverse md:items-center md:justify-start">
             <time
-              className="text-sm text-zinc-500 dark:text-zinc-500"
+              className="text-sm text-zinc-400/80 dark:text-zinc-400/80"
               dateTime={dateString}
             >
               {format(date, 'LLLL	d, yyyy')}

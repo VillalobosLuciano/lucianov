@@ -102,7 +102,7 @@ export function Header({ navigation }: { navigation: Navigation[] }) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-0 bg-zinc-900/60 backdrop-blur"
+                        className="fixed inset-0 z-0 bg-zinc-900/60 backdrop-blur-sm"
                       />
                       <Popover.Panel
                         static
