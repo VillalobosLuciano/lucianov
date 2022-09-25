@@ -4,7 +4,7 @@ import { Container } from '@/components/Container'
 import { Popover } from '@headlessui/react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Search from '@/components/ui/Search'
-import { XIcon, ViewListIcon } from '@heroicons/react/solid/'
+import { XIcon, ViewListIcon, SearchIcon } from '@heroicons/react/solid/'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import SectionSeparator from '../ui/SectionSeparator'
@@ -22,6 +22,7 @@ export default function Posts({ posts }: any) {
   const [searchInput, setSearchInput] = useState('')
   const [postsList, setPostsList] = useState(posts)
   const [selected, setSelected] = useState(allPosts)
+  const [openSearch, setOpenSearch] = useState(false)
 
   const router = useRouter()
 
@@ -96,25 +97,40 @@ export default function Posts({ posts }: any) {
   return (
     <>
       <div className="flex border-b border-white/10 md:border-none">
-        <div className="mx-auto flex w-full max-w-7xl items-center px-6">
-          <div className="my-4 w-fit text-sm transition-colors dark:text-zinc-400/80 dark:hover:text-zinc-50 md:mt-5">
+        <div className="mx-auto flex w-full max-w-7xl items-center px-4">
+          <div className="my-4 w-full text-sm transition-colors dark:text-zinc-400/80 dark:hover:text-zinc-50 md:mt-5">
             <Popover className="lg:hidden">
               {({ open }) => (
                 <>
-                  <Popover.Button
-                    className="relative mt-1 flex items-center space-x-2"
-                    aria-label="Toggle site navigation"
-                  >
-                    <ViewListIcon className="h-4 w-4 text-zinc-400" />
-                    <span className="text-zinc-300">Categories</span>
-                    {/* {({ open }) =>
-                      open ? (
-                        <ChevronUpIcon className="h-6 w-6" />
-                      ) : (
-                        <ChevronDownIcon className="h-6 w-6" />
-                      )
-                    } */}
-                  </Popover.Button>
+                  {!openSearch ? (
+                    <div className="flex w-full items-center justify-between px-2">
+                      <Popover.Button
+                        className="relative flex items-center space-x-2"
+                        aria-label="Toggle site navigation"
+                      >
+                        <ViewListIcon className="h-4 w-4 text-zinc-400" />
+                        <span className="text-zinc-300">Categories</span>
+                      </Popover.Button>
+                      <SearchIcon
+                        onClick={() => setOpenSearch(true)}
+                        className="h-4 w-4 cursor-pointer text-zinc-400 hover:text-zinc-100"
+                      />
+                    </div>
+                  ) : (
+                    <div className="-my-1 flex w-full items-center">
+                      <Search
+                        handleSearch={handleSearch}
+                        searchInput={searchInput}
+                        openSearch={openSearch}
+                      />
+                      {openSearch && (
+                        <XIcon
+                          onClick={() => setOpenSearch(false)}
+                          className="absolute right-[18px] z-10 h-7 w-7 cursor-pointer p-1.5 text-zinc-400"
+                        />
+                      )}
+                    </div>
+                  )}
                   <AnimatePresence initial={false}>
                     {open && (
                       <>
@@ -179,9 +195,11 @@ export default function Posts({ posts }: any) {
           </div>
         </div>
       </div>
-      <div className="mx-auto my-12 flex max-w-7xl flex-col px-4 lg:flex-row">
-        <div className="mb-6 flex w-full flex-col self-start lg:sticky lg:top-12 lg:max-w-[300px]">
-          {/* <Search handleSearch={handleSearch} searchInput={searchInput} /> */}
+      <div className="mx-auto flex max-w-7xl flex-col lg:my-12 lg:flex-row">
+        <div className="flex w-full flex-col self-start lg:sticky lg:top-12 lg:mb-6 lg:max-w-[280px]">
+          <div className="hidden lg:flex">
+            <Search handleSearch={handleSearch} searchInput={searchInput} />
+          </div>
           <div className="mt-6 hidden w-full cursor-pointer flex-col gap-y-2 lg:flex">
             {filteredCategories &&
               filteredCategories.map((cat: any, i: number) => (
@@ -203,38 +221,38 @@ export default function Posts({ posts }: any) {
           </div>
         </div>
         <div className="ml-8 hidden h-auto w-px flex-col bg-white/5 lg:flex" />
-        <div className="flex w-full flex-col gap-y-6 md:my-2 lg:ml-12">
-          <div className="flex flex-col">
+        <div className="flex w-full flex-col md:my-2 lg:ml-10 lg:gap-y-5">
+          <div className="mb-6 flex flex-col bg-gradient-to-br from-zinc-900 via-orange-500/[.03] to-amber-500/[.03] px-8 pt-14 pb-6 lg:mx-4 lg:rounded-2xl">
             <h2 className="text-4xl font-semibold text-zinc-300">
               {selected.title}
             </h2>
-            <SectionSeparator mt={2} mb={2} />
-            <p className="pb-4 text-xl text-zinc-400">{selected.description}</p>
+            <p className="pb-4 text-xl text-zinc-500">{selected.description}</p>
           </div>
-
-          {postsList.length ? (
-            postsList.map((post: any, i: number) => (
-              <motion.div
-                key={post._id}
-                initial={{
-                  opacity: 0,
-                }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.2, delay: 0.1 + i * 0.1 }}
-              >
-                <PostPreview
-                  key={post.slug}
-                  title={post.title}
-                  date={post.date}
-                  slug={post.slug}
-                  excerpt={post.excerpt}
-                  categories={post.categories}
-                />
-              </motion.div>
-            ))
-          ) : (
-            <div className="text-zinc-400">No posts yet</div>
-          )}
+          <div className="flex w-full flex-col gap-y-6 px-6 lg:px-4">
+            {postsList.length ? (
+              postsList.map((post: any, i: number) => (
+                <motion.div
+                  key={post._id}
+                  initial={{
+                    opacity: 0,
+                  }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.2, delay: 0.1 + i * 0.1 }}
+                >
+                  <PostPreview
+                    key={post.slug}
+                    title={post.title}
+                    date={post.date}
+                    slug={post.slug}
+                    excerpt={post.excerpt}
+                    categories={post.categories}
+                  />
+                </motion.div>
+              ))
+            ) : (
+              <div className="text-zinc-400">No posts yet</div>
+            )}
+          </div>
         </div>
       </div>
     </>
