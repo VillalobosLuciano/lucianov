@@ -155,10 +155,10 @@ export default function Posts({ posts }: any) {
                           className="fixed inset-x-0 bottom-0 z-0 origin-bottom rounded-t-2xl border-t border-amber-500/30 bg-zinc-900 px-6 pt-8 pb-14"
                         >
                           <div className="flex flex-col gap-y-6">
-                            <div className="flex items-center justify-between text-zinc-200">
-                              <h3>Categories</h3>
+                            <div className="flex items-center justify-between pl-1.5">
+                              <h3 className="text-zinc-300">Categories</h3>
                               <Popover.Button>
-                                <XIcon className="h-5 w-5 hover:text-zinc-100" />
+                                <XIcon className="h-5 w-5 text-zinc-400 hover:text-zinc-200" />
                               </Popover.Button>
                             </div>
                             <div className="w-full space-y-1">
@@ -171,7 +171,7 @@ export default function Posts({ posts }: any) {
                                       className={clsx(
                                         'cursor-pointer rounded-md border border-transparent px-4 py-2 text-zinc-400/80 transition-colors duration-300 hover:text-zinc-300',
                                         {
-                                          'bg-zinc-700/50 dark:text-zinc-300':
+                                          'bg-zinc-500/10 dark:text-zinc-300':
                                             cat.title === selected.title,
                                           'hover:bg-zinc-700/10':
                                             cat.title !== selected.title,
@@ -195,8 +195,8 @@ export default function Posts({ posts }: any) {
           </div>
         </div>
       </div>
-      <div className="mx-auto flex max-w-7xl flex-col lg:my-12 lg:flex-row">
-        <div className="flex w-full flex-col self-start lg:sticky lg:top-12 lg:mb-6 lg:max-w-[280px]">
+      <div className="mx-auto mb-24 flex max-w-7xl flex-col lg:my-12 lg:flex-row">
+        <div className="flex w-full flex-col self-start lg:sticky lg:top-12 lg:mb-6 lg:max-w-[300px] lg:px-4">
           <div className="hidden lg:flex">
             <Search handleSearch={handleSearch} searchInput={searchInput} />
           </div>
@@ -220,9 +220,9 @@ export default function Posts({ posts }: any) {
               ))}
           </div>
         </div>
-        <div className="ml-8 hidden h-auto w-px flex-col bg-white/5 lg:flex" />
-        <div className="flex w-full flex-col md:my-2 lg:ml-10 lg:gap-y-5">
-          <div className="mb-6 flex flex-col bg-gradient-to-br from-zinc-900 via-orange-500/[.03] to-amber-500/[.03] px-8 pt-14 pb-6 lg:mx-4 lg:rounded-2xl">
+        <div className="ml-4 hidden h-auto w-px flex-col bg-white/5 lg:flex" />
+        <div className="flex w-full flex-col lg:ml-10 lg:gap-y-5">
+          <div className="mb-6 flex flex-col bg-gradient-to-b from-zinc-300/[.025] to-zinc-900 px-8 pt-14 pb-6 lg:mx-4 lg:mb-4 lg:rounded-2xl lg:bg-gradient-to-r lg:pb-5 lg:pt-8">
             <h2 className="text-4xl font-semibold text-zinc-300">
               {selected.title}
             </h2>
