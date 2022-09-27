@@ -65,17 +65,16 @@ type Navigation = {
 export function Header({ navigation }: { navigation: Navigation[] }) {
   const lgQuery = useMediaQuery(1024)
   return (
-    <header className="">
-      <nav className="relative z-50 flex justify-between py-4 md:pt-8 md:pb-6">
-        <div className="relative z-10 flex items-center gap-16">
-          <Link href="/" aria-label="Home">
-            <a className="mt-1">
-              <Logo className="ml-5 h-7 w-12 md:ml-1" />
-            </a>
-          </Link>
-          <div className="-mb-1 hidden lg:flex lg:space-x-6">
-            <NavLinks navigation={navigation} />
-          </div>
+    <header className="bg-zinc-900/80 backdrop-blur-sm">
+      <nav className="relative z-50 flex items-center justify-between py-2 md:py-5 lg:px-2">
+        <Link href="/" aria-label="Home">
+          <a className="mt-1">
+            <Logo className="ml-5 h-7 w-12 md:ml-1" />
+          </a>
+        </Link>
+
+        <div className="hidden lg:flex lg:space-x-6">
+          <NavLinks navigation={navigation} />
         </div>
         <div className="mr-3 flex items-center gap-6 md:mr-0">
           <Popover className="lg:hidden">

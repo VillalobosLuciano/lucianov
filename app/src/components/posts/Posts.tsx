@@ -195,8 +195,8 @@ export default function Posts({ posts }: any) {
           </div>
         </div>
       </div>
-      <div className="mx-auto mb-24 flex max-w-7xl flex-col lg:my-12 lg:flex-row">
-        <div className="flex w-full flex-col self-start lg:sticky lg:top-12 lg:mb-6 lg:max-w-[300px] lg:px-4">
+      <div className="mx-auto mb-24 flex max-w-7xl flex-col lg:mb-0 lg:flex-row">
+        <div className="flex w-full flex-col self-start lg:sticky lg:top-28 lg:mb-6 lg:max-w-[315px] lg:px-2">
           <div className="hidden lg:flex">
             <Search handleSearch={handleSearch} searchInput={searchInput} />
           </div>
@@ -220,13 +220,18 @@ export default function Posts({ posts }: any) {
               ))}
           </div>
         </div>
-        <div className="ml-4 hidden h-auto w-px flex-col bg-white/5 lg:flex" />
-        <div className="flex w-full flex-col lg:ml-10 lg:gap-y-5">
-          <div className="mb-6 flex flex-col bg-gradient-to-b from-zinc-300/[.025] to-zinc-900 px-8 pt-14 pb-6 lg:mx-4 lg:mb-4 lg:rounded-2xl lg:bg-gradient-to-r lg:pb-5 lg:pt-8">
-            <h2 className="text-4xl font-semibold text-zinc-300">
+        <div className="ml-6 hidden h-auto w-px flex-col bg-white/5 lg:flex" />
+        <div className="flex w-full flex-col lg:mt-[92px] lg:ml-10 lg:gap-y-5">
+          <div className="mb-6 flex flex-col bg-gradient-to-b from-amber-400/[.02] to-zinc-900 px-7 pt-14 pb-6 lg:mx-4 lg:mb-2 lg:rounded-xl lg:bg-gradient-to-r lg:pb-2 lg:pt-8">
+            <span className="text-xs leading-relaxed tracking-wide text-amber-400/50">
+              Category
+            </span>
+            <h2 className="text-3xl font-semibold text-zinc-300">
               {selected.title}
             </h2>
-            <p className="pb-4 text-xl text-zinc-500">{selected.description}</p>
+            <p className="pb-4 pt-2 text-xl text-zinc-500">
+              {selected.description}
+            </p>
           </div>
           <div className="flex w-full flex-col gap-y-6 px-6 lg:px-4">
             {postsList.length ? (

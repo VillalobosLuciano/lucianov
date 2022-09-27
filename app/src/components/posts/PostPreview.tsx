@@ -25,16 +25,16 @@ export default function PostPreview({
 
   return (
     <div className="w-full rounded-xl border border-white/5 bg-zinc-800/5 px-4 py-5 lg:p-8">
-      <div className="mb-2 flex flex-row items-center gap-x-4 md:mb-1 md:justify-between md:gap-0">
-        <time className="text-sm text-zinc-400/80 md:text-base">
+      <div className="mb-2 flex flex-row items-center justify-between gap-x-4 md:mb-1 md:gap-0">
+        <time className="text-sm text-zinc-500 md:text-base">
           {format(parseISO(date), 'MMMM dd, yyyy')}
         </time>
-        <div className="order-first w-fit md:order-none">
+        <div className="-mt-2 w-fit lg:mt-0">
           {categories?.map((tag: any) => (
             <p
               onClick={handleTagChange}
               key={tag._id}
-              className="cursor-pointer rounded-md border border-amber-300/20 py-1 px-2 text-xs font-medium text-zinc-400/80 transition first-letter:uppercase hover:text-zinc-400/80 dark:text-zinc-400/80 dark:hover:border-amber-500/60 dark:hover:text-zinc-200 md:px-3 md:py-1 md:text-sm"
+              className="cursor-pointer rounded-md border border-amber-400/30 py-1 px-2 text-xs font-medium text-zinc-400/80 transition first-letter:uppercase hover:text-zinc-400/80 dark:text-zinc-400 dark:hover:border-amber-500/60 dark:hover:text-zinc-200 md:px-3 md:py-1 md:text-sm"
             >
               {tag.title}
             </p>
@@ -49,8 +49,6 @@ export default function PostPreview({
             </a>
           </Link>
         </h3>
-
-        <div className="mt-4 text-zinc-400/80 line-clamp-2">{excerpt}</div>
       </div>
     </div>
   )

@@ -19,7 +19,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lexend:wght@400;500&display=swap"
           />
         </Head>
-        <body className="flex flex-col bg-zinc-100 dark:bg-zinc-900">
+        <body className="flex flex-col bg-zinc-100 dark:bg-[#19191a]">
           <Main />
           <NextScript />
         </body>
