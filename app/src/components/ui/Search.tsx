@@ -12,7 +12,7 @@ export default function Search({ handleSearch, searchInput, openSearch }: any) {
         onChange={handleSearch}
         placeholder="Search posts..."
         className={clsx(
-          'block w-full rounded-md border pl-9 text-zinc-400 placeholder-zinc-400/50 dark:border-white/10 dark:bg-transparent dark:text-zinc-300 dark:focus:ring-zinc-400/80',
+          'block w-full rounded-md border bg-transparent pl-9 text-zinc-400 placeholder-zinc-400/50 dark:border-white/10 dark:text-zinc-300 dark:focus:ring-zinc-400/80',
           {
             'py-[3px] text-sm': openSearch,
             'py-2': !openSearch,

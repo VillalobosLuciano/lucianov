@@ -9,6 +9,7 @@ import clsx from 'clsx'
 import ThemeSelector from '../ThemeSelector'
 import useMediaQuery from '../../hooks/useMediaQuery'
 import SectionSeparator from '../ui/SectionSeparator'
+import { createContext, useContext, useState } from 'react'
 
 function MenuIcon(props: any) {
   return (
@@ -64,24 +65,29 @@ type Navigation = {
 
 export function Header({ navigation }: { navigation: Navigation[] }) {
   const lgQuery = useMediaQuery(1024)
+  const [isOpen, setIsOpen] = useState(Boolean)
+
+  console.log('Header Popover', isOpen)
+
   return (
-    <header className="bg-zinc-900/80 backdrop-blur-sm">
-      <nav className="relative z-50 flex items-center justify-between py-2 md:py-5 lg:px-2">
+    <header className="bg-[#19191a] lg:bg-zinc-900/80 lg:backdrop-blur-lg">
+      <nav className="relative z-50 mx-auto flex w-full max-w-7xl items-center justify-between py-2 md:py-5 lg:px-2">
         <Link href="/" aria-label="Home">
-          <a className="mt-1">
-            <Logo className="ml-5 h-7 w-12 md:ml-1" />
+          <a className="mt-1 ml-1 lg:ml-0">
+            <Logo className="relative z-50 ml-5 h-7 w-12 md:ml-1" />
           </a>
         </Link>
 
         <div className="hidden lg:flex lg:space-x-6">
           <NavLinks navigation={navigation} />
         </div>
-        <div className="mr-3 flex items-center gap-6 md:mr-0">
+        <div className="mr-2 flex items-center gap-6 md:mr-0">
           <Popover className="lg:hidden">
             {({ open }) => (
               <>
                 <Popover.Button
-                  className="relative z-10 mr-2 mt-1 inline-flex items-center rounded-lg bg-zinc-700/50 stroke-zinc-200 p-1 hover:stroke-zinc-600 active:stroke-zinc-900 [&:not(:focus-visible)]:focus:outline-none"
+                  onClick={() => setIsOpen(open)}
+                  className="relative z-10 mr-2 mt-1 inline-flex items-center stroke-zinc-400 p-1 [&:not(:focus-visible)]:focus:outline-none"
                   aria-label="Toggle site navigation"
                 >
                   {({ open }) =>
@@ -131,13 +137,10 @@ export function Header({ navigation }: { navigation: Navigation[] }) {
           </Popover>
 
           <div
-            className={clsx(
-              'mr-2 rounded-lg bg-zinc-700/50 p-1 text-zinc-200 md:mr-0',
-              {
-                '': lgQuery,
-                'absolute right-14 mt-[2px]': !lgQuery,
-              }
-            )}
+            className={clsx('mr-1 text-zinc-400 md:mr-0', {
+              '': lgQuery,
+              'absolute right-14 mt-[2px]': !lgQuery,
+            })}
           >
             <ThemeSelector />
           </div>

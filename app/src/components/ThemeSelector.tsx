@@ -14,7 +14,7 @@ const ThemeSelector = () => {
         onClick={() => setTheme(isDark ? 'light' : 'dark')}
         className="flex h-full w-full items-center justify-center"
       >
-        <Icon className="z-10 h-6 w-6" />
+        <Icon className="z-10 h-5 w-5" />
       </button>
     </NoSsr>
   )

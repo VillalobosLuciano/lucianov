@@ -25,15 +25,12 @@ const navigation = [
 const PostLayout = ({ children }: Props) => {
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <div className="fixed inset-x-0 top-0 w-full md:px-4">
-        <div className="mx-auto w-full max-w-7xl">
-          <Header navigation={navigation} />
-        </div>
+      <div className="fixed inset-x-0 top-0 w-full">
+        <Header navigation={navigation} />
       </div>
       <main className="mb-auto">{children}</main>
-      <div className="mx-auto w-full max-w-7xl md:px-4">
-        <Footer />
-      </div>
+
+      <Footer />
     </div>
   )
 }

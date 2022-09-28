@@ -34,7 +34,7 @@ export default function PostPreview({
             <p
               onClick={handleTagChange}
               key={tag._id}
-              className="cursor-pointer rounded-md border border-amber-400/30 py-1 px-2 text-xs font-medium text-zinc-400/80 transition first-letter:uppercase hover:text-zinc-400/80 dark:text-zinc-400 dark:hover:border-amber-500/60 dark:hover:text-zinc-200 md:px-3 md:py-1 md:text-sm"
+              className="cursor-pointer rounded-md border border-amber-400/10 bg-amber-400/[0.04] py-1 px-2 text-xs font-medium text-zinc-400/80 transition first-letter:uppercase hover:text-zinc-400/80 dark:text-zinc-400 dark:hover:border-amber-400/30 dark:hover:text-zinc-200 md:px-3 md:py-1 md:text-sm"
             >
               {tag.title}
             </p>

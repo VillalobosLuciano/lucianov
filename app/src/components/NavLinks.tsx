@@ -21,9 +21,9 @@ export function NavLinks({ navigation }: { navigation: Navigation[] }) {
             onClick={() => router.push(item.pathname)}
             key={item.pathname}
             className={clsx(
-              'relative cursor-pointer px-4 py-1 font-display text-base capitalize tracking-tight transition-colors delay-150',
+              'relative cursor-pointer rounded-md px-4 py-1 font-display text-base capitalize tracking-tight transition-colors delay-150',
               {
-                'dark:text-zinc-200': isActive,
+                'bg-amber-400/[0.04] dark:text-zinc-300': isActive,
                 'text-zinc-500 transition-colors duration-200 hover:text-zinc-400/80 dark:text-zinc-500':
                   !isActive,
               }
@@ -34,7 +34,7 @@ export function NavLinks({ navigation }: { navigation: Navigation[] }) {
             <AnimatePresence>
               {hoveredIndex === index && (
                 <motion.span
-                  className="absolute inset-0 rounded bg-zinc-500/5"
+                  className="absolute inset-0 rounded-md bg-amber-400/[0.01]"
                   layoutId="hoverBackground"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1, transition: { duration: 0.15 } }}

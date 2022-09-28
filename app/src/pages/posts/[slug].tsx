@@ -38,7 +38,7 @@ const PostPage: NextPageWithLayout = ({ data = {}, preview }: any) => {
         category={post?.categories[0]}
       />
       <div className="mx-auto flex max-w-7xl flex-col-reverse px-2 pb-24 lg:flex-row">
-        <div className="w-full py-6 px-4 lg:w-[64%]">
+        <div className="w-full py-6 px-2 lg:w-[64%]">
           <Prose content={post?.content} />
         </div>
         <div className="hidden h-auto w-px flex-col bg-white/5 md:ml-12 lg:flex xl:ml-14"></div>
