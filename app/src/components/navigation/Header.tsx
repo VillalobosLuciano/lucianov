@@ -9,7 +9,7 @@ import clsx from 'clsx'
 import ThemeSelector from '../ThemeSelector'
 import useMediaQuery from '../../hooks/useMediaQuery'
 import SectionSeparator from '../ui/SectionSeparator'
-import { createContext, useContext, useState } from 'react'
+import { useToggleContext } from '@/hooks/useToggle'
 
 function MenuIcon(props: any) {
   return (
@@ -65,9 +65,7 @@ type Navigation = {
 
 export function Header({ navigation }: { navigation: Navigation[] }) {
   const lgQuery = useMediaQuery(1024)
-  const [isOpen, setIsOpen] = useState(Boolean)
-
-  console.log('Header Popover', isOpen)
+  const { toggle, setToggle } = useToggleContext()
 
   return (
     <header className="bg-[#19191a] lg:bg-zinc-900/80 lg:backdrop-blur-lg">
@@ -86,7 +84,7 @@ export function Header({ navigation }: { navigation: Navigation[] }) {
             {({ open }) => (
               <>
                 <Popover.Button
-                  onClick={() => setIsOpen(open)}
+                  onClick={() => setToggle(open)}
                   className="relative z-10 mr-2 mt-1 inline-flex items-center stroke-zinc-400 p-1 [&:not(:focus-visible)]:focus:outline-none"
                   aria-label="Toggle site navigation"
                 >

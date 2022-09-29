@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import { useState, useEffect, useContext, Suspense } from 'react'
 import PostPreview from '@/components/posts/PostPreview'
 import { Container } from '@/components/Container'
 import { Popover } from '@headlessui/react'
@@ -7,8 +7,7 @@ import Search from '@/components/ui/Search'
 import { XIcon, ViewListIcon, SearchIcon } from '@heroicons/react/solid/'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
-import SectionSeparator from '../ui/SectionSeparator'
-import { useAtom } from 'jotai'
+import { useToggleContext } from '@/hooks/useToggle'
 
 interface Category {
   title: string
@@ -16,8 +15,11 @@ interface Category {
 }
 
 export default function Posts({ posts }: any) {
-  // const [isOpen] = useAtom(dropDownAtom)
-  // console.log('aer', isOpen)
+  const { toggle, setToggle } = useToggleContext()
+
+  useEffect(() => {
+    setToggle(true)
+  }, [setToggle])
 
   const allPosts: Category = {
     description: 'hagale pues',
@@ -100,97 +102,99 @@ export default function Posts({ posts }: any) {
 
   return (
     <>
-      <Popover className="fixed top-[55px] w-full border-b border-white/5 bg-[#19191a] px-4 py-3 lg:hidden [&:not(:focus-visible)]:focus:outline-none">
-        {({ open }) => (
-          <>
-            {!openSearch ? (
-              <div className="flex w-full items-center justify-between px-2">
-                <Popover.Button
-                  className="relative flex items-center space-x-2"
-                  aria-label="Toggle site navigation"
-                >
-                  <ViewListIcon className="h-4 w-4 text-zinc-400" />
-                  <span className="text-zinc-300">Categories</span>
-                </Popover.Button>
-                <SearchIcon
-                  onClick={() => setOpenSearch(true)}
-                  className="h-4 w-4 cursor-pointer text-zinc-400 hover:text-zinc-100"
-                />
-              </div>
-            ) : (
-              <div className="-my-1 flex w-full items-center">
-                <Search
-                  handleSearch={handleSearch}
-                  searchInput={searchInput}
-                  openSearch={openSearch}
-                />
-                {openSearch && (
-                  <XIcon
-                    onClick={() => setOpenSearch(false)}
-                    className="absolute right-[18px] z-10 h-7 w-7 cursor-pointer p-1.5 text-zinc-400"
-                  />
-                )}
-              </div>
-            )}
-            <AnimatePresence initial={false}>
-              {open && (
-                <>
-                  <Popover.Overlay
-                    static
-                    as={motion.div}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-0 bg-zinc-900/60 backdrop-blur-sm"
-                  />
-                  <Popover.Panel
-                    static
-                    as={motion.div}
-                    initial={{ opacity: 0, y: 32 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{
-                      opacity: 0,
-                      y: 32,
-                      transition: { duration: 0.2 },
-                    }}
-                    className="fixed inset-x-0 bottom-0 z-0 origin-bottom rounded-t-2xl border-t border-amber-500/30 bg-zinc-900 px-6 pt-8 pb-14"
+      {toggle && (
+        <Popover className="fixed top-[55px] w-full border-b border-white/5 bg-[#19191a] px-4 py-3 lg:hidden [&:not(:focus-visible)]:focus:outline-none">
+          {({ open }) => (
+            <>
+              {!openSearch ? (
+                <div className="flex w-full items-center justify-between px-2">
+                  <Popover.Button
+                    className="relative flex items-center space-x-2"
+                    aria-label="Toggle site navigation"
                   >
-                    <div className="flex flex-col gap-y-6">
-                      <div className="flex items-center justify-between pl-1.5">
-                        <h3 className="text-zinc-300">Categories</h3>
-                        <Popover.Button>
-                          <XIcon className="h-5 w-5 text-zinc-400 hover:text-zinc-200" />
-                        </Popover.Button>
-                      </div>
-                      <div className="w-full space-y-1">
-                        {filteredCategories &&
-                          filteredCategories.map((cat: any, i: number) => (
-                            <Popover.Button
-                              as="div"
-                              onClick={() => handleSelected(cat)}
-                              className={clsx(
-                                'cursor-pointer rounded-md border border-transparent px-4 py-2 text-zinc-400/80 transition-colors duration-300 hover:text-zinc-300',
-                                {
-                                  'bg-zinc-500/10 dark:text-zinc-300':
-                                    cat.title === selected.title,
-                                  'hover:bg-zinc-700/10':
-                                    cat.title !== selected.title,
-                                }
-                              )}
-                              key={i}
-                            >
-                              {cat.title}
-                            </Popover.Button>
-                          ))}
-                      </div>
-                    </div>
-                  </Popover.Panel>
-                </>
+                    <ViewListIcon className="h-4 w-4 text-zinc-400" />
+                    <span className="text-zinc-300">Categories</span>
+                  </Popover.Button>
+                  <SearchIcon
+                    onClick={() => setOpenSearch(true)}
+                    className="h-4 w-4 cursor-pointer text-zinc-400 hover:text-zinc-100"
+                  />
+                </div>
+              ) : (
+                <div className="-my-1 flex w-full items-center">
+                  <Search
+                    handleSearch={handleSearch}
+                    searchInput={searchInput}
+                    openSearch={openSearch}
+                  />
+                  {openSearch && (
+                    <XIcon
+                      onClick={() => setOpenSearch(false)}
+                      className="absolute right-[18px] z-10 h-7 w-7 cursor-pointer p-1.5 text-zinc-400"
+                    />
+                  )}
+                </div>
               )}
-            </AnimatePresence>
-          </>
-        )}
-      </Popover>
+              <AnimatePresence initial={false}>
+                {open && (
+                  <>
+                    <Popover.Overlay
+                      static
+                      as={motion.div}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="fixed inset-0 z-0 bg-zinc-900/60 backdrop-blur-sm"
+                    />
+                    <Popover.Panel
+                      static
+                      as={motion.div}
+                      initial={{ opacity: 0, y: 32 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{
+                        opacity: 0,
+                        y: 32,
+                        transition: { duration: 0.2 },
+                      }}
+                      className="fixed inset-x-0 bottom-0 z-0 origin-bottom rounded-t-2xl border-t border-amber-500/30 bg-zinc-900 px-6 pt-8 pb-14"
+                    >
+                      <div className="flex flex-col gap-y-6">
+                        <div className="flex items-center justify-between pl-1.5">
+                          <h3 className="text-zinc-300">Categories</h3>
+                          <Popover.Button>
+                            <XIcon className="h-5 w-5 text-zinc-400 hover:text-zinc-200" />
+                          </Popover.Button>
+                        </div>
+                        <div className="w-full space-y-1">
+                          {filteredCategories &&
+                            filteredCategories.map((cat: any, i: number) => (
+                              <Popover.Button
+                                as="div"
+                                onClick={() => handleSelected(cat)}
+                                className={clsx(
+                                  'cursor-pointer rounded-md border border-transparent px-4 py-2 text-zinc-400/80 transition-colors duration-300 hover:text-zinc-300',
+                                  {
+                                    'bg-zinc-500/10 dark:text-zinc-300':
+                                      cat.title === selected.title,
+                                    'hover:bg-zinc-700/10':
+                                      cat.title !== selected.title,
+                                  }
+                                )}
+                                key={i}
+                              >
+                                {cat.title}
+                              </Popover.Button>
+                            ))}
+                        </div>
+                      </div>
+                    </Popover.Panel>
+                  </>
+                )}
+              </AnimatePresence>
+            </>
+          )}
+        </Popover>
+      )}
 
       <div className="mx-auto mb-24 flex max-w-7xl flex-col lg:mb-0 lg:flex-row">
         <div className="flex w-full flex-col self-start lg:sticky lg:top-[114px] lg:mb-6 lg:max-w-[315px] lg:px-2">

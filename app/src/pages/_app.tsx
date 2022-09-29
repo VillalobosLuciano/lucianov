@@ -2,6 +2,7 @@ import 'focus-visible'
 import '@/styles/tailwind.css'
 import { ThemeProvider } from 'next-themes'
 import { motion } from 'framer-motion'
+import { ToggleProvider } from '@/hooks/useToggle'
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
@@ -24,24 +25,26 @@ export default function MyApp({
 
   return (
     <ThemeProvider attribute="class" defaultTheme="dark">
-      {getLayout(
-        <motion.div
-          className="font-display"
-          key={router.route}
-          initial="initial"
-          animate="animate"
-          variants={{
-            initial: {
-              opacity: 0,
-            },
-            animate: {
-              opacity: 1,
-            },
-          }}
-        >
-          <Component {...pageProps} />
-        </motion.div>
-      )}
+      <ToggleProvider>
+        {getLayout(
+          <motion.div
+            className="font-display"
+            key={router.route}
+            initial="initial"
+            animate="animate"
+            variants={{
+              initial: {
+                opacity: 0,
+              },
+              animate: {
+                opacity: 1,
+              },
+            }}
+          >
+            <Component {...pageProps} />
+          </motion.div>
+        )}
+      </ToggleProvider>
     </ThemeProvider>
   )
 }
