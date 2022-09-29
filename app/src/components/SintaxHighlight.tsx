@@ -37,9 +37,9 @@ export default function SintaxHighlight({ code, codeLanguage }: Props) {
         <button
           aria-label="Copy code"
           type="button"
-          className={`absolute right-2 top-2 z-20 hidden h-9 w-9 rounded-md border p-1.5 dark:border-amber-500/30 lg:right-2.5 lg:top-2.5 lg:block ${
+          className={`absolute right-2 top-2 z-20 hidden h-9 w-9 rounded-md border p-1.5 dark:border-amber-400/30 lg:right-2.5 lg:top-2.5 lg:block ${
             copied
-              ? 'border-teal-600/90 focus:border-teal-600/90 focus:outline-none dark:border-amber-500/50 dark:focus:border-amber-500/60'
+              ? 'border-teal-600/90 focus:border-teal-600/90 focus:outline-none dark:border-amber-400/50 dark:focus:border-amber-400/50'
               : 'border-zinc-300/90'
           }`}
           onClick={onCopy}
@@ -51,7 +51,7 @@ export default function SintaxHighlight({ code, codeLanguage }: Props) {
             fill="none"
             className={
               copied
-                ? 'text-teal-600/90 dark:text-amber-500/60'
+                ? 'text-teal-600/90 dark:text-amber-400/50'
                 : 'text-zinc-400 dark:text-zinc-300'
             }
           >
@@ -80,8 +80,8 @@ export default function SintaxHighlight({ code, codeLanguage }: Props) {
 
       <div className="relative rounded-2xl bg-zinc-600/10 ring-1 ring-white/10 backdrop-blur">
         <div className="absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-amber-300/0 via-amber-500/40 to-amber-300/0" />
-        <div className="pt-2 lg:pt-3 lg:pl-3">
-          <div className="mt-2 flex items-start text-sm">
+        <div className="pt-1 lg:pt-3 lg:pl-3">
+          <div className="mt-2 flex items-start text-sm lg:mt-0">
             <div
               aria-hidden="true"
               className="hidden select-none border-r border-zinc-300/5 pr-3 text-end font-mono text-zinc-600 lg:flex"
@@ -106,7 +106,7 @@ export default function SintaxHighlight({ code, codeLanguage }: Props) {
                   className={clsx(className, 'flex overflow-x-auto pb-4')}
                   style={style}
                 >
-                  <code className="px-4">
+                  <code className="px-3 lg:px-4">
                     {tokens.map((line, index) => (
                       <div key={index} {...getLineProps({ line })}>
                         {line.map((token, index) => (

@@ -25,7 +25,7 @@ export default function PostPreview({
 
   return (
     <div className="w-full rounded-xl border border-white/5 bg-zinc-800/5 px-4 py-5 lg:p-8">
-      <div className="mb-2 flex flex-row items-center justify-between gap-x-4 md:mb-1 md:gap-0">
+      <div className="mb-2 mt-[1px] flex flex-row items-center justify-between gap-x-4 md:mb-1 md:gap-0 lg:mt-0">
         <time className="text-sm text-zinc-500 md:text-base">
           {format(parseISO(date), 'MMMM dd, yyyy')}
         </time>

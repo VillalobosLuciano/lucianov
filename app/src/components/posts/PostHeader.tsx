@@ -28,17 +28,17 @@ export default function PostHeader({
   const date = parseISO(dateString)
   return (
     <>
-      <div className="flex border-b border-white/10 md:border-none lg:mt-20">
+      <div className="mt-14 flex border-b border-white/10 px-6 md:border-none lg:mt-20 lg:px-0">
         <div className="mx-auto flex w-full max-w-7xl items-center lg:px-3">
           <button
-            className="my-4 w-fit text-sm transition-colors dark:text-zinc-400/80 dark:hover:text-zinc-50 md:mt-5"
+            className="my-3 w-fit text-sm transition-colors dark:text-zinc-400/80 dark:hover:text-zinc-50 md:mt-5"
             onClick={() => router.back()}
           >
             ← Back to Blog
           </button>
         </div>
       </div>
-      <div className="mb-10 flex w-full flex-col space-y-5 border-b-[1px] border-white/10 bg-gradient-to-br from-zinc-900 via-orange-500/[.03] to-amber-500/[.03] pb-14 md:mb-14 md:bg-gradient-to-b md:pb-24">
+      <div className="mb-10 flex w-full flex-col space-y-5 border-b-[1px] border-white/10 bg-gradient-to-br from-zinc-900 via-orange-500/[.03] to-amber-500/[.03] px-6 pb-14 md:mb-14 md:bg-gradient-to-b md:pb-24 lg:px-0">
         <div className="mx-auto flex w-full max-w-7xl flex-col lg:px-3">
           <div className="mt-4 mb-5 flex h-28 w-fit flex-col justify-between gap-x-4 md:mt-12 md:h-auto md:flex-row-reverse md:items-center md:justify-start">
             <time
