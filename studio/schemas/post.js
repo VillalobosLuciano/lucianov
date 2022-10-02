@@ -18,17 +18,24 @@ export default {
       },
     },
     {
-      name: "excerpt",
-      title: "Excerpt",
-      type: "string",
-    },
-    {
       name: "content",
       title: "Content",
       type: "array",
       of: [
         { type: "block" },
-        { type: "image", options: { hotspot: true } },
+        {
+          type: "image",
+          fields: [
+            {
+              name: "caption",
+              type: "string",
+              title: "Caption",
+              options: {
+                isHighlighted: true,
+              },
+            },
+          ],
+        },
         { type: "code", options: { withFilename: true } },
       ],
     },

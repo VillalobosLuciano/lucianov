@@ -1,7 +1,10 @@
+import { ChevronRightIcon } from '@heroicons/react/solid'
 import { PortableText } from '@portabletext/react'
 import clsx from 'clsx'
 import SanityImage from './SanityImage'
 import SintaxHighlight from './SintaxHighlight'
+import Image from 'next/image'
+import { urlForImage } from '@/lib/sanity'
 
 const components = {
   types: {
@@ -10,31 +13,44 @@ const components = {
         return null
       }
       return (
-        <>
-          <div className="relative mx-auto mt-10 mb-4 h-56 max-w-xl lg:mt-16 lg:h-80">
-            <SanityImage
-              className="absolute inset-0"
-              src={value}
-              alt={value.alt || ' '}
-              layout="fill"
-            />
+        <div className="not-prose flex lg:items-center">
+          <div className="flex min-w-full flex-col">
+            <div className="relative mt-2 h-64 min-w-full rounded-xl bg-[#fafafa] lg:mt-3 lg:mb-4 lg:h-96">
+              <Image
+                className="rounded-xl object-contain"
+                src={urlForImage(value).url()}
+                alt={value.alt || ' '}
+                layout="fill"
+              />
+            </div>
+            <div className="ml-4 flex items-center gap-x-3 pt-3 pb-1 lg:hidden">
+              <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/60 border-b-transparent"></div>
+              <p className="text-zinc-500">{value.caption}</p>
+            </div>
           </div>
-          <p className="mb-12 mt-3 text-center italic text-zinc-600 dark:text-zinc-400">
-            {value.caption}
-          </p>
-        </>
+          {value.caption && (
+            <div className="hidden min-w-[200px] max-w-xl items-center lg:ml-28 lg:flex lg:gap-x-4">
+              <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/60 border-b-transparent"></div>
+              <p className="text-zinc-500">{value.caption}</p>
+            </div>
+          )}
+        </div>
       )
     },
     code: ({ value }: any) => {
       return (
-        <div className="not-prose flex items-center">
-          <div className="relative min-w-full">
+        <div className="not-prose flex lg:items-center">
+          <div className="relative min-w-full lg:mb-1">
             <SintaxHighlight code={value.code} codeLanguage={value.language} />
+            <div className="ml-4 flex items-center gap-x-3 pt-3 pb-1 lg:hidden">
+              <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/60 border-b-transparent"></div>
+              <p className="text-zinc-500">{value.filename}</p>
+            </div>
           </div>
           {value.filename && (
-            <div className="hidden min-w-[200px] max-w-xl items-center lg:ml-[120px] lg:flex lg:gap-x-4">
+            <div className="hidden min-w-[200px] max-w-xl items-center lg:ml-28 lg:flex lg:gap-x-4">
               <div className="border-t-[5px] border-r-[10px] border-b-[5px] border-t-transparent border-r-amber-500/60 border-b-transparent"></div>
-              <p className="text-sm text-zinc-400/80">{value.filename}</p>
+              <p className="text-sm text-zinc-500">{value.filename}</p>
             </div>
           )}
         </div>

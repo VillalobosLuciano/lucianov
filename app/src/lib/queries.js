@@ -4,7 +4,6 @@ const postFields = groq`
   _id,
   title,
   date,
-  excerpt,
   "slug": slug.current,
   "author": author->{
     name, 
