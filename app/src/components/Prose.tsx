@@ -1,10 +1,15 @@
 import { ChevronRightIcon } from '@heroicons/react/solid'
-import { PortableText } from '@portabletext/react'
+import {
+  PortableText,
+  toPlainText,
+  PortableTextComponents,
+} from '@portabletext/react'
 import clsx from 'clsx'
 import SanityImage from './SanityImage'
 import SintaxHighlight from './SintaxHighlight'
 import Image from 'next/image'
 import { urlForImage } from '@/lib/sanity'
+import slugify from 'slugify'
 
 const components = {
   types: {
@@ -12,15 +17,21 @@ const components = {
       if (!value?.asset?._ref) {
         return null
       }
+      const imageSize = value.asset._ref.split('-')[2].split('x')
+      const imageWidth = imageSize[0]
+      const imageHeight = imageSize[1]
+
       return (
         <div className="not-prose flex lg:items-center">
           <div className="flex min-w-full flex-col">
-            <div className="relative mt-2 h-64 min-w-full rounded-xl bg-[#fafafa] lg:mt-3 lg:mb-4 lg:h-96">
+            <div className="relative mt-2 min-w-full rounded-xl bg-[#fafafa] lg:my-3">
               <Image
                 className="rounded-xl object-contain"
                 src={urlForImage(value).url()}
                 alt={value.alt || ' '}
-                layout="fill"
+                layout="responsive"
+                width={imageWidth}
+                height={imageHeight}
               />
             </div>
             <div className="ml-4 flex items-center gap-x-3 pt-3 pb-1 lg:hidden">
@@ -29,9 +40,9 @@ const components = {
             </div>
           </div>
           {value.caption && (
-            <div className="hidden min-w-[200px] max-w-xl items-center lg:ml-28 lg:flex lg:gap-x-4">
-              <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/60 border-b-transparent"></div>
-              <p className="text-zinc-500">{value.caption}</p>
+            <div className="hidden min-w-[215px] max-w-xl items-center lg:ml-28 lg:flex lg:gap-x-4">
+              <div className="border-t-[5px] border-r-[10px] border-b-[5px] border-t-transparent border-r-amber-500/60 border-b-transparent"></div>
+              <p className="text-sm leading-5 text-zinc-500">{value.caption}</p>
             </div>
           )}
         </div>
@@ -40,17 +51,23 @@ const components = {
     code: ({ value }: any) => {
       return (
         <div className="not-prose flex lg:items-center">
-          <div className="relative min-w-full lg:mb-1">
-            <SintaxHighlight code={value.code} codeLanguage={value.language} />
+          <div className="relative my-3 min-w-full">
+            <SintaxHighlight
+              code={value.code}
+              codeLanguage={value.language}
+              highlightedLines={value.highlightedLines}
+            />
             <div className="ml-4 flex items-center gap-x-3 pt-3 pb-1 lg:hidden">
               <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/60 border-b-transparent"></div>
               <p className="text-zinc-500">{value.filename}</p>
             </div>
           </div>
           {value.filename && (
-            <div className="hidden min-w-[200px] max-w-xl items-center lg:ml-28 lg:flex lg:gap-x-4">
+            <div className="hidden min-w-[215px] max-w-xl items-center lg:ml-28 lg:flex lg:gap-x-4">
               <div className="border-t-[5px] border-r-[10px] border-b-[5px] border-t-transparent border-r-amber-500/60 border-b-transparent"></div>
-              <p className="text-sm text-zinc-500">{value.filename}</p>
+              <p className="text-sm leading-5 text-zinc-500">
+                {value.filename}
+              </p>
             </div>
           )}
         </div>

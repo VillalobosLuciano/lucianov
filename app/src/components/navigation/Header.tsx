@@ -69,7 +69,7 @@ export function Header({ navigation }: { navigation: Navigation[] }) {
 
   return (
     <header className="bg-[#19191a] lg:bg-zinc-900/80 lg:backdrop-blur-lg">
-      <nav className="relative z-50 mx-auto flex w-full max-w-7xl items-center justify-between py-2 md:py-5 lg:px-2">
+      <nav className="relative z-50 mx-auto flex w-full max-w-7xl items-center justify-between py-2 md:py-4 lg:px-2">
         <Link href="/" aria-label="Home">
           <a className="mt-1 ml-1 lg:ml-0">
             <Logo className="relative z-50 ml-5 h-7 w-12 md:ml-1" />

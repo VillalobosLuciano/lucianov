@@ -197,7 +197,7 @@ export default function Posts({ posts }: any) {
       )}
 
       <div className="mx-auto mb-24 flex max-w-7xl flex-col lg:mb-0 lg:flex-row">
-        <div className="flex w-full flex-col self-start lg:sticky lg:top-[114px] lg:mb-6 lg:max-w-[315px] lg:px-2">
+        <div className="flex w-full flex-col self-start lg:sticky lg:top-[106px] lg:mb-6 lg:max-w-[315px] lg:px-2">
           <div className="hidden lg:flex">
             <Search handleSearch={handleSearch} searchInput={searchInput} />
           </div>
@@ -222,7 +222,7 @@ export default function Posts({ posts }: any) {
           </div>
         </div>
         <div className="mt-8 ml-7 hidden min-h-screen w-px flex-col bg-white/5 lg:flex" />
-        <div className="mt-24 flex w-full flex-col lg:my-[130px] lg:ml-11 lg:gap-y-5">
+        <div className="mt-24 flex w-full flex-col lg:my-[122px] lg:ml-11 lg:gap-y-5">
           <div className="mb-2 flex flex-col bg-gradient-to-b from-amber-300/[.04] to-zinc-900 px-7 pt-14 pb-6 lg:mx-4 lg:rounded-xl lg:bg-gradient-to-r lg:px-8 lg:pb-2 lg:pt-8">
             <span className="pb-0.5 text-xs tracking-wide text-amber-400/50">
               Category
@@ -230,7 +230,7 @@ export default function Posts({ posts }: any) {
             <h2 className="text-3xl font-semibold text-zinc-300">
               {selected.title}
             </h2>
-            <p className="pb-4 pt-1 text-lg text-zinc-500">
+            <p className="max-w-xl pb-4 pt-1 text-lg text-zinc-500">
               {selected.description}
             </p>
           </div>

@@ -23,7 +23,7 @@ export function NavLinks({ navigation }: { navigation: Navigation[] }) {
             className={clsx(
               'relative cursor-pointer rounded-md px-4 py-1 font-display text-base capitalize tracking-tight transition-colors delay-150',
               {
-                'bg-amber-400/[0.04] dark:text-zinc-300': isActive,
+                'dark:text-zinc-300': isActive,
                 'text-zinc-500 transition-colors duration-200 hover:text-zinc-400/80 dark:text-zinc-500':
                   !isActive,
               }

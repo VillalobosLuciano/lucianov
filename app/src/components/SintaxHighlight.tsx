@@ -6,9 +6,22 @@ interface Props {
   className?: string
   code: string
   codeLanguage: any
+  highlightedLines: number[]
 }
 
-export default function SintaxHighlight({ code, codeLanguage }: Props) {
+export default function SintaxHighlight({
+  code,
+  codeLanguage,
+  highlightedLines,
+}: Props) {
+  const hLines = (index: number) => {
+    if (highlightedLines?.includes(index + 1)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   const [hovered, setHovered] = useState(false)
   const [copied, setCopied] = useState(false)
 
@@ -81,7 +94,7 @@ export default function SintaxHighlight({ code, codeLanguage }: Props) {
       <div className="relative rounded-2xl bg-zinc-600/10 ring-1 ring-white/10 backdrop-blur">
         <div className="absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-amber-300/0 via-amber-500/40 to-amber-300/0" />
         <div className="pt-1 lg:pt-3 lg:pl-3">
-          <div className="mt-2 flex items-start text-sm lg:mt-0">
+          <div className="mt-2 flex items-start text-sm">
             <div
               aria-hidden="true"
               className="hidden select-none border-r border-zinc-300/5 pr-3 text-end font-mono text-zinc-600 lg:flex"
@@ -103,15 +116,29 @@ export default function SintaxHighlight({ code, codeLanguage }: Props) {
             >
               {({ className, style, tokens, getLineProps, getTokenProps }) => (
                 <pre
-                  className={clsx(className, 'flex overflow-x-auto pb-4')}
+                  onClick={() => console.log(getTokenProps)}
+                  className={clsx(
+                    className,
+                    'mb-4 flex w-full overflow-x-auto'
+                  )}
                   style={style}
                 >
-                  <code className="px-3 lg:px-4">
+                  <code className="min-w-full px-3 lg:px-4">
                     {tokens.map((line, index) => (
-                      <div key={index} {...getLineProps({ line })}>
-                        {line.map((token, index) => (
-                          <span key={index} {...getTokenProps({ token })} />
-                        ))}
+                      <div key={index} {...getLineProps({ line, index })}>
+                        <div
+                          className={clsx('rounded', {
+                            'bg-amber-300/10': hLines(index),
+                            'bg-transparent': !hLines(index),
+                          })}
+                        >
+                          {line.map((token, index) => (
+                            <span
+                              key={index}
+                              {...getTokenProps({ token, index })}
+                            />
+                          ))}
+                        </div>
                       </div>
                     ))}
                   </code>

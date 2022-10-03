@@ -28,7 +28,7 @@ export default function PostHeader({
   const date = parseISO(dateString)
   return (
     <>
-      <div className="mt-14 flex border-b border-white/10 px-6 md:border-none lg:mt-20 lg:px-0">
+      <div className="mt-14 flex border-b border-white/10 px-6 md:mt-16 md:border-none lg:px-0">
         <div className="mx-auto flex w-full max-w-7xl items-center lg:px-3">
           <button
             className="my-3 w-fit text-sm transition-colors dark:text-zinc-400/80 dark:hover:text-zinc-50 md:mt-5"
