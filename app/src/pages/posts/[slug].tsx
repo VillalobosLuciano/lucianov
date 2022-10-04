@@ -11,6 +11,7 @@ import type { ReactElement } from 'react'
 import PostLayout from '@/components/layouts/PostLayout'
 import SanityImage from '../../components/SanityImage'
 import NoSsr from '@/components/NoSsr'
+import Link from 'next/link'
 
 const PostPage: NextPageWithLayout = ({ data = {}, preview }: any) => {
   const router = useRouter()
@@ -58,9 +59,11 @@ const PostPage: NextPageWithLayout = ({ data = {}, preview }: any) => {
                 <p className="text-sm font-medium text-zinc-200">
                   {post?.author.name}
                 </p>
-                <p className="text-xs font-medium text-zinc-400/80 hover:text-zinc-400">
-                  @lucianov0
-                </p>
+                <Link href="#">
+                  <a className="text-xs font-medium text-zinc-400/80 hover:text-zinc-400">
+                    @lucianov0
+                  </a>
+                </Link>
               </div>
             </div>
           </div>

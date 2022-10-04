@@ -1,6 +1,4 @@
 import { parseISO, format } from 'date-fns'
-import SanityImage from '../SanityImage'
-import { ChevronLeftIcon } from '@heroicons/react/solid'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
@@ -32,7 +30,7 @@ export default function PostHeader({
         <div className="mx-auto flex w-full max-w-7xl items-center lg:px-3">
           <button
             className="my-3 w-fit text-sm transition-colors dark:text-zinc-400/80 dark:hover:text-zinc-50 md:mt-5"
-            onClick={() => router.back()}
+            onClick={() => router.push('/posts')}
           >
             ← Back to Blog
           </button>

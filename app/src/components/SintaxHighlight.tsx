@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react'
 import clsx from 'clsx'
 import Highlight, { defaultProps } from 'prism-react-renderer'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface Props {
   className?: string
@@ -46,54 +47,53 @@ export default function SintaxHighlight({
       onMouseLeave={onExit}
       className="relative pt-0.5"
     >
-      {hovered && (
-        <button
-          aria-label="Copy code"
-          type="button"
-          className={`absolute right-2 top-2 z-20 hidden h-9 w-9 rounded-md border p-1.5 dark:border-amber-400/30 lg:right-2.5 lg:top-2.5 lg:block ${
-            copied
-              ? 'border-teal-600/90 focus:border-teal-600/90 focus:outline-none dark:border-amber-400/50 dark:focus:border-amber-400/50'
-              : 'border-zinc-300/90'
-          }`}
-          onClick={onCopy}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            fill="none"
-            className={
-              copied
-                ? 'text-teal-600/90 dark:text-amber-400/50'
-                : 'text-zinc-400 dark:text-zinc-300'
-            }
+      <AnimatePresence>
+        {hovered && (
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            aria-label="Copy code"
+            type="button"
+            className={`absolute z-20 hidden h-8 w-8 rounded-md bg-amber-400/5 p-1.5 transition-colors hover:bg-amber-400/10 lg:right-2.5 lg:top-3 lg:block ${
+              copied ? 'focus:bg-amber-400/10 focus:outline-none' : ''
+            }`}
+            onClick={onCopy}
           >
-            {copied ? (
-              <>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-                />
-              </>
-            ) : (
-              <>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                />
-              </>
-            )}
-          </svg>
-        </button>
-      )}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              fill="none"
+              className={copied ? 'dark:text-amber-400' : 'dark:text-zinc-200'}
+            >
+              {copied ? (
+                <>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1}
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                  />
+                </>
+              ) : (
+                <>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1}
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                  />
+                </>
+              )}
+            </svg>
+          </motion.button>
+        )}
+      </AnimatePresence>
 
-      <div className="relative rounded-2xl bg-zinc-600/10 ring-1 ring-white/10 backdrop-blur">
-        <div className="absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-amber-300/0 via-amber-500/40 to-amber-300/0" />
-        <div className="pt-1 lg:pt-3 lg:pl-3">
+      <div className="relative rounded-md bg-zinc-600/10 ring-1 ring-white/10 backdrop-blur">
+        <div className="absolute -top-px left-20 right-11 h-px bg-gradient-to-r from-amber-300/0 via-amber-500/30 to-amber-300/0" />
+        <div className="pt-1 lg:pt-2 lg:pl-3">
           <div className="mt-2 flex items-start text-sm">
             <div
               aria-hidden="true"
@@ -119,7 +119,7 @@ export default function SintaxHighlight({
                   onClick={() => console.log(getTokenProps)}
                   className={clsx(
                     className,
-                    'mb-4 flex w-full overflow-x-auto'
+                    'flex w-full overflow-x-auto pl-2 pt-0.5 pb-4 lg:pt-0 lg:pl-0'
                   )}
                   style={style}
                 >
@@ -127,8 +127,8 @@ export default function SintaxHighlight({
                     {tokens.map((line, index) => (
                       <div key={index} {...getLineProps({ line, index })}>
                         <div
-                          className={clsx('rounded', {
-                            'bg-amber-300/10': hLines(index),
+                          className={clsx('', {
+                            'bg-amber-100/5': hLines(index),
                             'bg-transparent': !hLines(index),
                           })}
                         >

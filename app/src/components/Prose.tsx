@@ -24,9 +24,9 @@ const components = {
       return (
         <div className="not-prose flex lg:items-center">
           <div className="flex min-w-full flex-col">
-            <div className="relative mt-2 min-w-full rounded-xl bg-[#fafafa] lg:my-3">
+            <div className="relative my-2 min-w-full rounded-md bg-[#fafafa]">
               <Image
-                className="rounded-xl object-contain"
+                className="rounded-md object-contain"
                 src={urlForImage(value).url()}
                 alt={value.alt || ' '}
                 layout="responsive"
@@ -34,15 +34,19 @@ const components = {
                 height={imageHeight}
               />
             </div>
-            <div className="ml-4 flex items-center gap-x-3 pt-3 pb-1 lg:hidden">
-              <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/60 border-b-transparent"></div>
-              <p className="text-zinc-500">{value.caption}</p>
+            <div className="ml-4 flex items-center gap-x-3 pb-1 lg:hidden">
+              <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/70 border-b-transparent"></div>
+              <p className="font-sans text-sm leading-5 text-zinc-400/80">
+                {value.caption}
+              </p>
             </div>
           </div>
           {value.caption && (
             <div className="hidden min-w-[215px] max-w-xl items-center lg:ml-28 lg:flex lg:gap-x-4">
-              <div className="border-t-[5px] border-r-[10px] border-b-[5px] border-t-transparent border-r-amber-500/60 border-b-transparent"></div>
-              <p className="text-sm leading-5 text-zinc-500">{value.caption}</p>
+              <div className="border-t-[5px] border-r-[10px] border-b-[5px] border-t-transparent border-r-amber-500/70 border-b-transparent"></div>
+              <p className="font-sans text-sm leading-5 text-zinc-400/80">
+                {value.caption}
+              </p>
             </div>
           )}
         </div>
@@ -51,21 +55,23 @@ const components = {
     code: ({ value }: any) => {
       return (
         <div className="not-prose flex lg:items-center">
-          <div className="relative my-3 min-w-full">
+          <div className="relative my-2 min-w-full">
             <SintaxHighlight
               code={value.code}
               codeLanguage={value.language}
               highlightedLines={value.highlightedLines}
             />
-            <div className="ml-4 flex items-center gap-x-3 pt-3 pb-1 lg:hidden">
-              <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/60 border-b-transparent"></div>
-              <p className="text-zinc-500">{value.filename}</p>
+            <div className="ml-4 flex items-center gap-x-3 pt-2 lg:hidden">
+              <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/70 border-b-transparent"></div>
+              <p className="font-sans text-sm leading-5 text-zinc-400/80">
+                {value.filename}
+              </p>
             </div>
           </div>
           {value.filename && (
             <div className="hidden min-w-[215px] max-w-xl items-center lg:ml-28 lg:flex lg:gap-x-4">
-              <div className="border-t-[5px] border-r-[10px] border-b-[5px] border-t-transparent border-r-amber-500/60 border-b-transparent"></div>
-              <p className="text-sm leading-5 text-zinc-500">
+              <div className="border-t-[5px] border-r-[10px] border-b-[5px] border-t-transparent border-r-amber-500/70 border-b-transparent"></div>
+              <p className="font-sans text-sm leading-5 text-zinc-400/80">
                 {value.filename}
               </p>
             </div>
@@ -86,9 +92,9 @@ export function Prose({ content, className, ...props }: Props) {
     <div
       className={clsx(
         className,
-        'prose prose-zinc max-w-none dark:prose-invert dark:text-zinc-300',
+        'prose prose-zinc max-w-none font-sans dark:prose-invert dark:text-zinc-100',
         // headings
-        'prose-headings:scroll-mt-28 prose-headings:font-sans prose-headings:font-semibold lg:prose-headings:scroll-mt-[8.5rem]',
+        'prose-headings:mb-6 prose-headings:mt-16 prose-headings:font-sans prose-headings:text-3xl prose-headings:font-semibold',
         // lead
         'prose-lead:text-zinc-400/80 dark:prose-lead:text-zinc-400',
         // links
@@ -96,9 +102,11 @@ export function Prose({ content, className, ...props }: Props) {
         // link underline
         'prose-a:no-underline dark:hover:prose-a:underline',
         // pre
-        'prose-pre:prose-pre:rounded-xl prose-pre:bg-zinc-900 prose-pre:shadow-lg dark:prose-pre:bg-zinc-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-zinc-300/10',
+        'prose-pre:prose-pre:rounded-xl prose-pre:bg-zinc-900 prose-pre:shadow-lg dark:prose-pre:bg-amber-400/20 dark:prose-pre:shadow-none dark:prose-pre:ring-1 dark:prose-pre:ring-zinc-300/10',
         // hr
-        'dark:prose-hr:border-zinc-800'
+        'dark:prose-hr:border-zinc-800',
+        // code
+        'prose-code:rounded prose-code:bg-amber-50/10 prose-code:p-0.5 prose-code:font-sans prose-code:before:content-none prose-code:after:content-none'
       )}
       {...props}
     >
