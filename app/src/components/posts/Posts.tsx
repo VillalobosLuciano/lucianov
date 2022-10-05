@@ -223,7 +223,7 @@ export default function Posts({ posts }: any) {
         </div>
         <div className="mt-8 ml-7 hidden min-h-screen w-px flex-col bg-white/5 lg:flex" />
         <div className="mt-24 flex w-full flex-col lg:my-[122px] lg:ml-11 lg:gap-y-5">
-          <div className="flex flex-col bg-gradient-to-b from-amber-300/[.04] to-zinc-900 px-7 pt-12 pb-4 lg:mx-4 lg:rounded-xl lg:bg-gradient-to-r lg:px-8 lg:pb-3 lg:pt-8">
+          <div className="flex flex-col bg-gradient-to-b from-amber-400/[.03] to-zinc-900 px-7 pt-10 pb-5 lg:mx-4 lg:mb-1 lg:rounded-xl lg:bg-gradient-to-r lg:px-8 lg:pb-3 lg:pt-8">
             <span className="pb-0.5 text-xs tracking-wide text-amber-400/50">
               Category
             </span>

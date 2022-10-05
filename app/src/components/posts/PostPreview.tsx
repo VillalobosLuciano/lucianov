@@ -25,7 +25,7 @@ export default function PostPreview({
 
   return (
     <div className="w-full rounded-md border border-white/5 bg-zinc-800/5 px-4 py-5 lg:rounded-xl lg:p-8">
-      <div className="mb-2 mt-[1px] flex flex-row items-center justify-between gap-x-4 md:mb-1 md:gap-0 lg:mt-0">
+      <div className="mb-1 mt-[1px] flex flex-row items-center justify-between gap-x-4 md:mb-1 md:gap-0 lg:mt-0">
         <time className="text-xs text-zinc-400/80 md:text-base">
           {format(parseISO(date), 'MMMM dd, yyyy')}
         </time>
@@ -34,7 +34,7 @@ export default function PostPreview({
             <p
               onClick={handleTagChange}
               key={tag._id}
-              className="cursor-pointer rounded border border-amber-400/10 bg-amber-300/5 py-1 px-2 text-xs font-medium text-zinc-400/80 transition first-letter:uppercase hover:text-zinc-400/80 dark:text-zinc-400/80 dark:hover:border-amber-400/30 dark:hover:text-zinc-200 md:px-3 md:py-1 md:text-sm lg:rounded-md"
+              className="cursor-pointer rounded border border-amber-300/10 bg-amber-400/[0.02] py-1 px-1.5 font-display text-xs font-medium text-zinc-400/80 transition first-letter:uppercase hover:text-zinc-400/80 dark:text-zinc-400/80 dark:hover:border-amber-400/30 dark:hover:text-zinc-200 md:px-3 md:py-1 md:text-sm lg:rounded-md"
             >
               {tag.title}
             </p>
