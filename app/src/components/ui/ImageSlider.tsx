@@ -39,11 +39,8 @@ export default function ImageSlider({ images }: any) {
   return (
     <>
       <div className="relative mb-8 md:mb-0">
-        <div className="mb-5 md:hidden">
-          <p className="text-3xl font-bold capitalize leading-snug tracking-tight transition-colors duration-1000 md:text-4xl">
-            Screenshots
-          </p>
-          <Underline className="-mt-2 -ml-1 flex h-4 w-fit" />
+        <div className="mb-6 md:mb-8 md:hidden">
+          <h2 className="text-3xl font-semibold text-zinc-200">Screenshots</h2>
         </div>
         <div ref={sliderRef} className="keen-slider">
           {images.map((image: any, i: number) => (
@@ -110,7 +107,7 @@ export default function ImageSlider({ images }: any) {
         )}
       </div>
       {loaded && instanceRef.current && (
-        <div className="mb-8 flex justify-center space-x-1 md:hidden">
+        <div className="flex justify-center space-x-1.5 md:hidden">
           {slides?.map((_, idx) => {
             const active = currentSlide === idx
             return (
@@ -120,9 +117,9 @@ export default function ImageSlider({ images }: any) {
                   instanceRef.current?.moveToIdx(idx)
                 }}
                 className={clsx(
-                  'cursor pointer z-1 h-[2px] w-10 rounded bg-zinc-400/80',
+                  'cursor pointer z-1 h-[2px] w-14 rounded bg-zinc-400/80',
                   {
-                    'bg-amber-500/80': active,
+                    'bg-amber-500/60': active,
                   }
                 )}
               ></button>

@@ -1,6 +1,7 @@
 import { parseISO, format } from 'date-fns'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { ChevronLeftIcon } from '@heroicons/react/solid'
 
 export default function PostHeader({
   title,
@@ -26,13 +27,14 @@ export default function PostHeader({
   const date = parseISO(dateString)
   return (
     <>
-      <div className="mt-14 flex border-b border-white/10 px-6 md:mt-16 md:border-none lg:px-0">
+      <div className="mt-14 flex border-b border-white/10 px-4 md:mt-16 md:border-none lg:px-0">
         <div className="mx-auto flex w-full max-w-7xl items-center lg:px-3">
           <button
-            className="my-3 w-fit text-sm transition-colors dark:text-zinc-400/80 dark:hover:text-zinc-50 md:mt-5"
-            onClick={() => router.push('/posts')}
+            className="my-3 flex w-fit items-center text-sm transition-colors dark:text-zinc-400/80 dark:hover:text-zinc-50 md:mt-5"
+            onClick={() => router.push('/projects')}
           >
-            ← Back to Blog
+            <ChevronLeftIcon className="mr-0.5 h-5 w-5 text-amber-400/40 lg:-ml-1.5" />
+            Back to Blog
           </button>
         </div>
       </div>

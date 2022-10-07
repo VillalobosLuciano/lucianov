@@ -24,11 +24,13 @@ const navigation = [
 
 const ProjectLayout = ({ children }: Props) => {
   return (
-    <Container className="flex min-h-screen max-w-7xl flex-col">
-      <Header navigation={navigation} />
-      <main className="mb-auto px-5 md:px-0">{children}</main>
+    <div className="flex min-h-screen w-full flex-col">
+      <div className="fixed inset-x-0 top-0 z-50 w-full">
+        <Header navigation={navigation} />
+      </div>
+      <main className="mb-auto">{children}</main>
       <Footer />
-    </Container>
+    </div>
   )
 }
 

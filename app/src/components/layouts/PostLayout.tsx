@@ -29,7 +29,6 @@ const PostLayout = ({ children }: Props) => {
         <Header navigation={navigation} />
       </div>
       <main className="mb-auto">{children}</main>
-
       <Footer />
     </div>
   )
