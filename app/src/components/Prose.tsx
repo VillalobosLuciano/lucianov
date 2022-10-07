@@ -34,12 +34,14 @@ const components = {
                 height={imageHeight}
               />
             </div>
-            <div className="ml-4 flex items-center gap-x-3 pb-1 lg:hidden">
-              <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/70 border-b-transparent"></div>
-              <p className="font-sans text-sm leading-5 text-zinc-400/80">
-                {value.caption}
-              </p>
-            </div>
+            {value.caption && (
+              <div className="ml-4 flex items-center gap-x-3 pb-1 lg:hidden">
+                <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/70 border-b-transparent"></div>
+                <p className="font-sans text-sm leading-5 text-zinc-400/80">
+                  {value.caption}
+                </p>
+              </div>
+            )}
           </div>
           {value.caption && (
             <div className="hidden min-w-[215px] max-w-xl items-center lg:ml-28 lg:flex lg:gap-x-4">
@@ -61,12 +63,14 @@ const components = {
               codeLanguage={value.language}
               highlightedLines={value.highlightedLines}
             />
-            <div className="ml-4 flex items-center gap-x-3 pt-2 lg:hidden">
-              <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/70 border-b-transparent"></div>
-              <p className="font-sans text-sm leading-5 text-zinc-400/80">
-                {value.filename}
-              </p>
-            </div>
+            {value.filename && (
+              <div className="ml-4 flex items-center gap-x-3 pt-2 lg:hidden">
+                <div className="border-t-[5px] border-l-[10px] border-b-[5px] border-t-transparent border-l-amber-500/70 border-b-transparent"></div>
+                <p className="font-sans text-sm leading-5 text-zinc-400/80">
+                  {value.filename}
+                </p>
+              </div>
+            )}
           </div>
           {value.filename && (
             <div className="hidden min-w-[215px] max-w-xl items-center lg:ml-28 lg:flex lg:gap-x-4">

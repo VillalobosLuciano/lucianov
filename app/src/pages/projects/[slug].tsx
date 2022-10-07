@@ -33,27 +33,28 @@ const ProjectPage: NextPageWithLayout = ({ data = {}, preview }: any) => {
 
   return (
     <NoSsr>
-      <div className="relative">
-        <div className="relative mx-auto pt-16 lg:pt-20">
-          <div className="mx-auto grid max-w-[40rem] grid-cols-1 gap-y-16 gap-x-6 xl:max-w-none xl:grid-cols-3">
+      <div className="relative lg:mx-2">
+        <div className="relative mx-auto py-12">
+          <div className="mx-auto grid max-w-[40rem] grid-cols-1 gap-y-16 gap-x-3 xl:max-w-none xl:grid-cols-3">
             <div className="flex flex-col">
               <button
-                className="-mt-10 mb-16 flex w-fit items-center transition-colors dark:text-zinc-400 dark:hover:text-zinc-200 md:mb-20 md:mt-0"
+                className="-mt-10 mb-16 flex w-fit items-center text-sm transition-colors dark:text-zinc-400/80 dark:hover:text-zinc-50 md:mb-20 md:-mt-9"
                 onClick={() => router.back()}
               >
                 <ChevronLeftIcon className="-ml-[5px] h-5" />
-                Back
+                Back to projects
               </button>
+
               <p className="text-lg font-semibold text-amber-500/80">
                 {project?.projectType}
               </p>
               <h1 className="mt-1 text-4xl font-extrabold leading-none tracking-tight text-zinc-200 sm:text-5xl sm:leading-[3.5rem]">
                 {project?.title}
               </h1>
-              <p className="mt-6 leading-7 text-zinc-300">
+              <p className="mt-6 leading-normal text-zinc-400">
                 <PortableText value={project?.description} />
               </p>
-              <div className="mt-6 grid w-fit grid-cols-3 gap-y-5 gap-x-7">
+              <div className="mt-8 grid w-fit grid-cols-3 gap-y-6 gap-x-7">
                 {project?.technologies?.map((tech: any, i: number) => (
                   <motion.div
                     className="flex items-center"
@@ -77,7 +78,7 @@ const ProjectPage: NextPageWithLayout = ({ data = {}, preview }: any) => {
                   </motion.div>
                 ))}
               </div>
-              <div className="mt-14 flex max-w-2xl items-center gap-4">
+              <div className="mt-16 flex max-w-2xl items-center gap-4">
                 <button className="inline-flex w-1/2 justify-center rounded-md bg-amber-500/80 py-4 text-zinc-100 transition-colors hover:bg-amber-500 md:rounded-lg">
                   <span className="flex items-center">
                     Live preview
@@ -102,20 +103,10 @@ const ProjectPage: NextPageWithLayout = ({ data = {}, preview }: any) => {
                 </button>
               </div>
             </div>
-            <div className="relative my-6 md:my-0 lg:col-span-2 xl:ml-20">
+            <div className="relative lg:col-span-2 xl:ml-20">
               <ImageSlider images={project?.screenshots} />
-
               <div className="z-0 hidden md:block">
-                <div className="absolute -top-4 -right-12 -left-12 h-px bg-zinc-100/[0.1] [mask-image:linear-gradient(to_right,transparent,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-                <div className="absolute -top-12 bottom-0 -left-4 w-px bg-zinc-100/[0.1] [mask-image:linear-gradient(to_top,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-                <div className="absolute -top-12 bottom-0 -right-4 w-px bg-zinc-100/[0.1] [mask-image:linear-gradient(to_top,white_4rem,white_calc(100%-4rem),transparent)]"></div>
-                <div className="absolute -top-12 right-10 mt-px flex h-8 items-end overflow-hidden">
-                  <div className="-mb-px flex h-[2px] w-80 -scale-x-100">
-                    <div className="w-full flex-none blur-sm [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#f1540bc6_67.19%,rgba(236,72,153,0)_100%)]"></div>
-                    <div className="-ml-[100%] w-full flex-none blur-[1px] [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#cc620b4c_67.19%,rgba(236,72,153,0)_100%)]"></div>
-                  </div>
-                </div>
-                <div className="absolute bottom-0 -left-48 flex h-8 items-end overflow-hidden">
+                <div className="absolute -bottom-12 flex h-8 items-end overflow-hidden">
                   <div className="-mb-px flex h-[2px] w-80 -scale-x-100">
                     <div className="w-full flex-none blur-sm [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#ed86094c_67.19%,rgba(236,72,153,0)_100%)]"></div>
                     <div className="-ml-[100%] w-full flex-none blur-[1px] [background-image:linear-gradient(90deg,rgba(56,189,248,0)_0%,#f59e09_32.29%,#e15c034c_67.19%,rgba(236,72,153,0)_100%)]"></div>
@@ -126,28 +117,26 @@ const ProjectPage: NextPageWithLayout = ({ data = {}, preview }: any) => {
           </div>
         </div>
 
-        <div className="absolute bottom-0 -right-16 left-0 hidden h-px bg-zinc-100/10 [mask-image:linear-gradient(to_right,transparent,white_4rem,white_calc(100%-4rem),transparent)] md:flex"></div>
+        <div className="absolute bottom-0 right-0 left-0 hidden h-px bg-zinc-100/10 [mask-image:linear-gradient(to_right,transparent,white_4rem,white_calc(100%-4rem),transparent)] md:flex"></div>
       </div>
-      <div className="mx-auto mt-4 max-w-[85rem] pb-14 md:mt-24">
+      <div className="mx-auto mt-4 max-w-[85rem] pb-14 md:mt-16">
         <div className="flex flex-col space-y-10 lg:flex-row lg:space-y-0 lg:space-x-20">
           <section className="w-full md:mt-6">
             <div className="mb-4 md:mb-8">
-              <h2 className="text-2xl font-bold capitalize leading-snug tracking-tight text-zinc-200">
+              <h2 className="text-3xl font-semibold capitalize leading-snug text-zinc-300">
                 Features
               </h2>
-              <Underline className="-mt-2 -ml-1 flex h-4 w-fit" />
             </div>
             <div className="max-w-xl">
               <Prose content={project?.content} />
             </div>
           </section>
-          <div className="relative flex h-auto w-px flex-col bg-white/10"></div>
+          <div className="relative flex h-auto w-px flex-col bg-white/5"></div>
           <section className="w-full max-w-2xl justify-start">
             <div className="md:mt-6">
-              <h2 className="text-2xl font-bold capitalize leading-snug tracking-tight text-zinc-200">
+              <h2 className="text-3xl font-semibold capitalize leading-snug text-zinc-300">
                 Dependencies
               </h2>
-              <Underline className="-mt-2 -ml-1 flex h-4 w-fit" />
             </div>
             <div className="pt-6 md:mb-6 md:pt-8">
               <Prose content={project?.dependencies} />

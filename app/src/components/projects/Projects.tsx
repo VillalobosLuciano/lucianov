@@ -25,10 +25,12 @@ export default function Projects({ projects }: any) {
   }
 
   return (
-    <Container className="py-24">
-      <div className="max-w-2xl pb-4 lg:mx-0">
-        <h2 className="text-4xl font-semibold text-zinc-200">Projects</h2>
-        <p className="mt-4 mb-6 text-lg leading-normal tracking-tight text-zinc-400">
+    <Container className="px-2 pt-12 pb-36 lg:px-0 lg:py-24">
+      <div className="max-w-2xl pb-6 lg:mx-0">
+        <h2 className="text-2xl font-semibold text-zinc-200 lg:text-4xl">
+          Projects
+        </h2>
+        <p className="mt-4 mb-6 leading-normal tracking-tight text-zinc-500 lg:text-lg">
           Contrary to popular belief, Lorem Ipsum is not simply random text. It
           has roots in a piece of classical Latin literature from 45 BC.
         </p>
@@ -38,9 +40,9 @@ export default function Projects({ projects }: any) {
           <button
             key={type}
             className={clsx(
-              'relative cursor-pointer rounded-md border-transparent px-3 py-1.5 text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
+              'relative cursor-pointer rounded-md border-transparent px-3 py-1 text-sm capitalize transition-colors delay-150 hover:delay-[0ms]',
               {
-                'border border-teal-600/30 bg-zinc-800/30 text-teal-600 dark:border-amber-500/50 dark:text-zinc-100':
+                'border border-teal-600/30 bg-zinc-800/30 text-teal-600 dark:border-amber-400/40 dark:text-zinc-100':
                   type === selected,
                 'border border-white/10 text-zinc-400 transition-colors duration-200 hover:text-zinc-400/80 dark:text-zinc-300/90 dark:hover:text-zinc-200':
                   type !== selected,
@@ -68,7 +70,7 @@ export default function Projects({ projects }: any) {
           </button>
         ))}
       </div>
-      <SectionSeparator mt={0} mb={4} />
+      <SectionSeparator mt={0} mb={6} />
       <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-9 gap-y-6 text-sm sm:grid-cols-2 lg:max-w-none lg:grid-cols-3">
         {projectsList.length ? (
           projectsList.map((project: any, i: number) => (

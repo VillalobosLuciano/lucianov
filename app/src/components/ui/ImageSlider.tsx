@@ -38,7 +38,7 @@ export default function ImageSlider({ images }: any) {
 
   return (
     <>
-      <div className="relative mb-8 md:mb-6">
+      <div className="relative mb-8 md:mb-0">
         <div className="mb-5 md:hidden">
           <p className="text-3xl font-bold capitalize leading-snug tracking-tight transition-colors duration-1000 md:text-4xl">
             Screenshots
@@ -63,16 +63,16 @@ export default function ImageSlider({ images }: any) {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute bottom-0 hidden w-full flex-col rounded-b-2xl border border-zinc-100/5 bg-zinc-900/70 px-4 py-3  backdrop-blur-lg md:flex"
+                  exit={{ opacity: 0 }}
+                  className="absolute bottom-0 hidden w-full flex-col rounded-b-2xl border border-zinc-100/5 bg-zinc-900/70 px-4 py-3 backdrop-blur-lg md:flex"
                 >
                   <div className="flex items-center space-x-4">
                     <p className="text-zinc-300">
                       {i + 1}
-                      <span className="text-zinc-400">/</span>
+                      <span className="text-zinc-200">/</span>
                       {images.length}
                     </p>
-                    <p className=" text-lg text-amber-500">{image?.caption}</p>
+                    <p className=" text-lg text-amber-50">{image?.caption}</p>
                   </div>
                 </motion.div>
               )}
