@@ -5,7 +5,6 @@ import SanityImage from '../SanityImage'
 import clsx from 'clsx'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
 import { motion } from 'framer-motion'
-import Underline from '@/components/icons/Underline'
 
 export default function ImageSlider({ images }: any) {
   const [currentSlide, setCurrentSlide] = React.useState(0)
